@@ -1,0 +1,2 @@
+{"_id":{"$oid":"5b5f15e1c283c6f59163a3c2"},"stadsnaam":"Antwerpen","main":"Clear","temperatuur":"29","kortebeschrijving":"clear sky","luchtdruk":"1014","vochtigheid":"42","temperatuur_min":"28","temperatuur_max":"31","windsnelheid":"5","windrichting":"200","bewolktheid":"0"}
+{"_id":{"$oid":"5b5f18f5c283c6eecf7a77e2"},"stadsnaam":"Lommel","main":"Clouds","temperatuur":"30","kortebeschrijving":"overcast clouds","luchtdruk":"1014","vochtigheid":"33","temperatuur_min":"28","temperatuur_max":"32","windsnelheid":"5","windrichting":"210","bewolktheid":"90"}
