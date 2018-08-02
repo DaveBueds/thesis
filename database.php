@@ -4,11 +4,18 @@
 
 class Database
 {
+    
     private static $dbName = 'thesis' ;
     private static $dbHost = 'localhost' ;
     private static $dbUsername = 'root';
     private static $dbUserPassword = 'root';
-     
+    /*
+    private static $dbName = 'a17_formula' ;
+    private static $dbHost = 'studev.groept.be' ;
+    private static $dbUsername = 'a17_formula';
+    private static $dbUserPassword = 'zo1jrzrf';
+    */
+
     private static $cont  = null;
      
     public function __construct() {

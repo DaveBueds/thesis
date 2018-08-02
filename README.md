@@ -12,3 +12,8 @@ Dit is de repo van Dave's thesis
 * Ga naar mongodb.com en installeer
 * Download NoSQLBooster for MongoDB als GUI
 * Importeer uit de db folder de .json files in database thesis
+
+### Connecteren met FEB's mysql databank
+* Connecteren met Pulse Secure VPN netwerk
+* In database.php commentaar wijzigen
+* In server_processing.php commentaar wijzigen
