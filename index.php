@@ -16,39 +16,14 @@ if($flag) {
 <html class="no-js" lang="en" dir="ltr">
 
 <head>
-    <meta charset="utf-8">
-    <meta charset="latin1_swedish_ci">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Training Data Collector</title>
-    <link rel="stylesheet" href="css/foundation.css">
-    <link rel="stylesheet" href="css/app.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">    
-    <!--<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">-->
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/zf/dt-1.10.18/datatables.min.css"/>
-    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.2.7/css/select.dataTables.min.css">
+    <?php include('head.php'); ?>
 </head>
 
 <body>
 
     <div class="grid-container">
 
-        <nav>
-            <div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
-                <button class="menu-icon" type="button" data-toggle="example-menu"></button>
-                <div class="title-bar-title">Training Data Collector</div>
-            </div>
-
-            <div class="top-bar" id="example-menu">
-                <div class="top-bar-left">
-                    <ul class="dropdown menu" data-dropdown-menu>
-                        <li class="menu-text">Training Data Collector</li>
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="mongo.php">MongoDB</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <?php include('navbar.php'); ?>
 
         <div class="grid-y medium-grid-frame">
             
@@ -61,7 +36,7 @@ if($flag) {
                     </div>
                 </div>
                 
-                <?php if($flag == 2 || $flag == 5) { ?>
+                <?php if($flag == 2 || $flag == 5 || $flag == 6) { ?>
                     <div class="callout alert small" data-closable="" data-alert>
                       <h5><?php echo $message; ?></h5>
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
@@ -146,8 +121,11 @@ if($flag) {
                                                                 $cursor = $manager->executeQuery('thesis.mechanischedata', $query);
 
                                                                 $i = 1;
+                                                                $geselecteerd = "";
                                                                 foreach ($cursor as $document) { 
-                                                                    echo '<option value="' . $document->_id .'">'.
+                                                                    if($i == 1) { $geselecteerd = "selected"; }
+                                                                    else {$geselecteerd = "";}
+                                                                    echo '<option value="' . $document->_id .'"' . $geselecteerd . '>'.
                                                                     't: ' . $document->toespoor .
                                                                     ',c: ' . $document->camber .
                                                                     ',b: ' . $document->banden .
@@ -298,8 +276,11 @@ if($flag) {
                                                                 $cursor = $manager->executeQuery('thesis.circuitdata', $query);
 
                                                                 $i = 1;
+                                                                $geselecteerd = "";
                                                                 foreach ($cursor as $document) { 
-                                                                    echo '<option value="' . $document->_id .'">'.
+                                                                    if($i == 1) { $geselecteerd = "selected"; }
+                                                                    else {$geselecteerd = "";}
+                                                                    echo '<option value="' . $document->_id .'"' . $geselecteerd . '>'.
                                                                     'locatie: ' . $document->locatienaam .
                                                                     ', wegtype: ' . $document->wegtype .
                                                                     ', ondergrond: ' . $document->ondergrond .
@@ -366,8 +347,11 @@ if($flag) {
                                                                 $cursor = $manager->executeQuery('thesis.eventdata', $query);
 
                                                                 $i = 1;
+                                                                $geselecteerd = "";
                                                                 foreach ($cursor as $document) { 
-                                                                    echo '<option value="' . $document->_id .'">'.
+                                                                    if($i == 1) { $geselecteerd = "selected"; }
+                                                                    else {$geselecteerd = "";}
+                                                                    echo '<option value="' . $document->_id .'"' . $geselecteerd . '>'.
                                                                     'type: ' . $document->typeEvent .
                                                                     '</option>';
                                                                     $i++;
@@ -412,8 +396,11 @@ if($flag) {
                                                                 $cursor = $manager->executeQuery('thesis.weerdata', $query);
 
                                                                 $i = 1;
+                                                                $geselecteerd = "";
                                                                 foreach ($cursor as $document) { 
-                                                                    echo '<option value="' . $document->_id .'">'.
+                                                                    if($i == 1) { $geselecteerd = "selected"; }
+                                                                    else {$geselecteerd = "";}
+                                                                    echo '<option value="' . $document->_id .'"' . $geselecteerd . '>'.
                                                                     $document->stadsnaam .
                                                                     ', m: ' . $document->main .
                                                                     ', t: ' . $document->temperatuur .
@@ -507,46 +494,17 @@ if($flag) {
                 </div>
             </div>
 
-            <div class="cell shrink footer">
-                <hr>
-                <div id="engadget-footer-contact-details-container">
-                    <footer id="engadget-footer-contact-details">
-                        <div class="footer-left">
-                            <div class="contact-details">
-                                <ul>
-                                    <li>
-                                        <img class="thumbnail" src="img/footerthumbnail.png">
-                                    </li>
-                                    <li class="footerColor">
-                                        <i class="fa fa-phone fa-lg" aria-hidden="true"></i> +32 016 35 20 81
-                                    </li>
-                                    <li>
-                                        <a data-toggle="animatedModal10"><i class="fa fa-envelope-o" aria-hidden="true"></i> Contact us</a>
-                                    </li>
-                                    <li>
-                                        <i class="fa fa-map-marker fa-lg" aria-hidden="true"></i> Diestsesteenweg 692, 3010 Kessel-lo, Belgium
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </footer>
-                </div>
-            </div>
+            <?php include('footer.php'); ?>
         </div>
 
 
 
 
     </div>
-    <script src="js/vendor/jquery.js"></script>
-    <script src="js/vendor/what-input.js"></script>
-    <script src="js/vendor/foundation.js"></script>
-    <script src="js/app.js"></script>
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <!--<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>-->
-    <!--<script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>-->
-    <script type="text/javascript" src="https://cdn.datatables.net/v/zf/dt-1.10.18/datatables.min.js"></script>
-    <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.7/js/dataTables.select.min.js"></script>
+    
+
+
+    <?php include('scripts.php'); ?>
 
 
     <script type="text/javascript">
@@ -582,38 +540,72 @@ if($flag) {
                 var data = [];
                 var table = $('#example').DataTable();
 
-                $( "tr.selected" ).each(function( index ) {
-                  //console.log( index + ": " + $( this ).text() );
-                  console.log(table.row(this).data());
-                  data.push(table.row(this).data());
-                });
-                var json = JSON.stringify(data);
-                console.log(json);
+                $md_val = $('#md_settings').val();
+                $cd_val = $('#cd_settings').val();
+                $ed_val = $('#ed_settings').val();
+                $wd_val = $('#wd_settings').val();
 
-                var name = JSON.stringify({"name": "Dave"});
-                $.ajax({
-                    url: "test.php",
-                    type: "POST",
-                    data: {'name': name},
-                    dataType: "JSON",
-                    //contentType: "application/json; charset=utf-8",
-                    success: function( data ) {
-                        console.log("success");
-                        console.log(data.status);
-                        window.location = "/thesis/mongo.php";
-                    }
-                });
+                console.log($md_val);
+                console.log($cd_val);
+                console.log($ed_val);
+                console.log($wd_val);
+                if ( !$md_val || !$cd_val || !$ed_val || !$wd_val  ) {
+                //if ( $md_val == 0 || $cd_val == 0 || $ed_val == 0 || $wd_val == 0  ) {
+                    $vlag = 6;
+                    console.log("FOUT");
+                    //window.location.href = window.location.pathname + "?flag=" + $vlag ; 
+                }
+                else {
+                    $( "tr.selected" ).each(function( index ) {
+                        
+                        var myObj = { "md_val": $md_val, "cd_val": $cd_val, "ed_val": $ed_val, "wd_val": $wd_val};
+                        myObj["tijd"] = table.row(this).data()[1];
+                        myObj["type"] = table.row(this).data()[2];
+                        myObj["data"] = table.row(this).data()[3];
+                        myObj["unit"] = table.row(this).data()[4];
+                        myObj["gpsid"] = table.row(this).data()[5];
+                        myObj["latitude"] = table.row(this).data()[6];
+                        myObj["longitude"] = table.row(this).data()[7];
+
+                        data.push(myObj);
+                    });
+
+                    console.log(data);
+                    var json = JSON.stringify(data);
+                    console.log(json);
+                    
+                    /*
+                    $.ajax({
+                        url: "test.php",
+                        type: "POST",
+                        data: {'data': json},
+                        dataType: "JSON",
+                        //contentType: "application/json; charset=utf-8",
+                        success: function( data ) {
+                            console.log("success");
+                            //console.log(data.status);
+                            //console.log(data.length);
+                            $vlag = data;
+                            console.log(data);
+                            console.log("thesis/index.php?flag=" + $vlag);
+                            window.location.href = window.location.pathname + "?flag=" + $vlag ;
+                            
+                        }
+                    });
+                    */
+                    
+                }
 
             });
             
 
-            $('.callout').closest('[data-alert]').fadeOut(3500);
+            $('.callout').closest('[data-alert]').delay(5000).fadeOut(1000);
 
 
             $(function() {
                 //$('#md_new_block').hide(); 
                 $('#md_settings').change(function(){
-                    if($('#md_settings').val() == 0 ) {
+                    if($('#md_settings').val() !== 0 ) {
                         $('.md_new_block').show(); 
                     } 
                     else {
