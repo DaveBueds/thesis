@@ -549,11 +549,10 @@ if($flag) {
                 console.log($cd_val);
                 console.log($ed_val);
                 console.log($wd_val);
-                if ( !$md_val || !$cd_val || !$ed_val || !$wd_val  ) {
-                //if ( $md_val == 0 || $cd_val == 0 || $ed_val == 0 || $wd_val == 0  ) {
+
+                if ( $md_val == 0 || $cd_val == 0 || $ed_val == 0 || $wd_val == 0  ) {
                     $vlag = 6;
-                    console.log("FOUT");
-                    //window.location.href = window.location.pathname + "?flag=" + $vlag ; 
+                    window.location.href = window.location.pathname + "?flag=" + $vlag ; 
                 }
                 else {
                     $( "tr.selected" ).each(function( index ) {
@@ -574,9 +573,9 @@ if($flag) {
                     var json = JSON.stringify(data);
                     console.log(json);
                     
-                    /*
+                    
                     $.ajax({
-                        url: "test.php",
+                        url: "koppeldata.php",
                         type: "POST",
                         data: {'data': json},
                         dataType: "JSON",
@@ -592,7 +591,6 @@ if($flag) {
                             
                         }
                     });
-                    */
                     
                 }
 

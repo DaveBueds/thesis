@@ -9,7 +9,6 @@
             <ul class="dropdown menu" data-dropdown-menu>
                 <li class="menu-text">Training Data Collector</li>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="mongo.php">MongoDB</a></li>
             </ul>
         </div>
     </div>
