@@ -3,6 +3,7 @@
   $toespoor = 0;
   $camber = 0;
   $banden = "";
+  $bandendruk = 0;
   $hoogte = 0;
   $veer = "";
   $torsieveer = "";
@@ -17,6 +18,7 @@
         $toespoor = $_POST['toespoor'];
         $camber = $_POST['camber'];
         $banden = $_POST['banden'];
+        $bandendruk = $_POST['bandendruk'];
         $hoogte = $_POST['hoogte'];
         $veer = $_POST['veer'];
         $torsieveer = $_POST['torsieveer'];
@@ -27,12 +29,12 @@
         $M_LSB = $_POST['M_LSB'];
         $M_R = $_POST['M_R'];
 
-    if(!$toespoor || !$camber || !$banden || !$hoogte || !$veer || !$torsieveer || !$LR_HSB || !$LR_LSB || !$LR_R || !$M_HSB || !$M_LSB || !$M_R){
+    if(!$toespoor || !$camber || !$banden || !$bandendruk || !$hoogte || !$veer || !$torsieveer || !$LR_HSB || !$LR_LSB || !$LR_R || !$M_HSB || !$M_LSB || !$M_R){
         $flag = 5;
     }
     else{
         $insRec       = new MongoDB\Driver\BulkWrite;
-        $insRec->insert(['toespoor' =>$toespoor, 'camber'=>$camber, 'banden'=>$banden, 'hoogte'=>$hoogte, 'veer'=>$veer, 'torsieveer'=>$torsieveer, 
+        $insRec->insert(['toespoor' =>$toespoor, 'camber'=>$camber, 'banden'=>$banden, 'bandendruk'=>$bandendruk, 'hoogte'=>$hoogte, 'veer'=>$veer, 'torsieveer'=>$torsieveer, 
         'LR_HSB'=>$LR_HSB, 'LR_LSB'=>$LR_LSB, 'LR_R'=>$LR_R, 'M_HSB'=>$M_HSB, 'M_LSB'=>$M_LSB, 'M_R'=>$M_R ]);
         $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);
         $result       = $manager->executeBulkWrite('thesis.mechanischedata', $insRec, $writeConcern);

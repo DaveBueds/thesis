@@ -129,6 +129,7 @@ if($flag) {
                                                                     't: ' . $document->toespoor .
                                                                     ',c: ' . $document->camber .
                                                                     ',b: ' . $document->banden .
+                                                                    ',bd: ' . $document->bandendruk .
                                                                     ',h: ' . $document->hoogte .
                                                                     ',v: ' . $document->veer .
                                                                     ',tv: ' . $document->torsieveer .
@@ -165,7 +166,7 @@ if($flag) {
                                                     </label>
                                                 </div>
 
-                                                <div class="md_new_block medium-6 cell" style="display: hide;">
+                                                <div class="md_new_block medium-4 cell" style="display: hide;">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg bandentype">Bandentype:</span>
                                                         <select name="banden" required>
@@ -174,7 +175,15 @@ if($flag) {
                                                         </select>
                                                     </label>
                                                 </div>
-                                                <div class="md_new_block medium-6 cell" style="display: hide;">
+                                                
+                                                <div class="md_new_block medium-4 cell" style="display: hide;">
+                                                    <label>
+                                                        <span data-tooltip class="top" title="Uitleg bandendruk">Bandendruk (bar):</span>
+                                                        <input name="bandendruk" type="number" value="2" step="0.1" required>
+                                                    </label>
+                                                </div>
+
+                                                <div class="md_new_block medium-4 cell" style="display: hide;">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg hoogte">Hoogte (mm):</span>
                                                         <input name="hoogte" type="number" value="3" step="0.5" required>
