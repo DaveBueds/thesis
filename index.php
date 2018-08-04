@@ -112,6 +112,33 @@ if($flag) {
                                                         <select name="settings" id="md_settings">
                                                             <option value="0">Maak/Selecteer setting</option>
                                                             <?php 
+                                                            $sql = 'SELECT * FROM MechanicalData ORDER BY idMechanischeData ASC';
+
+                                                            $i = 1;
+                                                            $geselecteerd = "";
+                                                            foreach ($pdo->query($sql) as $row) {
+                                                                if($i == 1) { $geselecteerd = "selected"; }
+                                                                echo '<option value="'.$row['idMechanischeData'].'"' . $geselecteerd . '>'.
+                                                                't:' . $row['toespoor'].
+                                                                ',c: ' .$row['camber'].
+                                                                ',b: ' .$row['banden'].
+                                                                ',bd: ' .$row['bandendruk'].
+                                                                ',h: ' .$row['hoogte'].
+                                                                ',v: ' .$row['veer'].
+                                                                ',tv: ' .$row['torsieveer'].
+                                                                ',LR_H: ' .$row['LR_HSB'].
+                                                                ',LR_L: ' .$row['LR_LSB'].
+                                                                ',LR_R: ' .$row['LR_R'].
+                                                                ',M_H: ' .$row['M_HSB'].
+                                                                ',M_L: ' .$row['M_LSB'].
+                                                                ',M_R: ' .$row['M_R'].
+                                                                '</option>';
+                                                                $i++;
+                                                            }
+                                                            ?>
+
+                                                            <?php 
+                                                            /*
                                                                 $filter = [];
                                                                 $options = [
                                                                     'sort' => ['$natural' => -1], //sorteren volgens laatst toegevoegd item
@@ -142,6 +169,7 @@ if($flag) {
                                                                     '</option>';
                                                                     $i++;
                                                                 }
+                                                                */
                                                             ?>
 
                                                         </select>
@@ -274,8 +302,24 @@ if($flag) {
                                                     <label>Settings:
                                                         <select name="settings" id="cd_settings">
                                                             <option value="0">Maak/Selecteer setting</option>
-                                                            
+
                                                             <?php 
+                                                            $sql = 'SELECT * FROM CircuitData ORDER BY idCircuitData ASC';
+
+                                                            $i = 1;
+                                                            $geselecteerd = "";
+                                                            foreach ($pdo->query($sql) as $row) {
+                                                                if($i == 1) { $geselecteerd = "selected"; }
+                                                                echo '<option value="'.$row['idCircuitData'].'"' . $geselecteerd . '>'.
+                                                                'locatie:' . $row['locatienaam'].
+                                                                ',wegtype: ' .$row['wegtype'].
+                                                                ',ondergrond: ' .$row['ondergrond'].
+                                                                '</option>';
+                                                                $i++;
+                                                            }
+                                                            ?>
+                                                            <?php 
+                                                                /*
                                                                 $filter = [];
                                                                 $options = [
                                                                     'sort' => ['$natural' => -1], //sorteren volgens laatst toegevoegd item
@@ -296,6 +340,7 @@ if($flag) {
                                                                     '</option>';
                                                                     $i++;
                                                                 }
+                                                                */
                                                             ?>
 
                                                         </select>
@@ -346,7 +391,22 @@ if($flag) {
                                                     <label>Settings:
                                                         <select name="settings" id="ed_settings">
                                                             <option value="0">Maak/Selecteer setting</option>
+                                                            
                                                             <?php 
+                                                            $sql = 'SELECT * FROM EventData ORDER BY idEventData ASC';
+
+                                                            $i = 1;
+                                                            $geselecteerd = "";
+                                                            foreach ($pdo->query($sql) as $row) {
+                                                                if($i == 1) { $geselecteerd = "selected"; }
+                                                                echo '<option value="'.$row['idEventData'].'"' . $geselecteerd . '>'.
+                                                                'typeEvent:' . $row['typeEvent'].
+                                                                '</option>';
+                                                                $i++;
+                                                            }
+                                                            ?>
+                                                            <?php 
+                                                            /*
                                                                 $filter = [];
                                                                 $options = [
                                                                     'sort' => ['$natural' => -1], //sorteren volgens laatst toegevoegd item
@@ -365,6 +425,7 @@ if($flag) {
                                                                     '</option>';
                                                                     $i++;
                                                                 }
+                                                                */
                                                             ?>
 
                                                         </select>
@@ -396,6 +457,30 @@ if($flag) {
                                                         <select name="settings" id="wd_settings">
                                                             <option value="0">Maak/Selecteer setting</option>
                                                             <?php 
+                                                            $sql = 'SELECT * FROM WeerData ORDER BY idWeerData ASC';
+
+                                                            $i = 1;
+                                                            $geselecteerd = "";
+                                                            foreach ($pdo->query($sql) as $row) {
+                                                                if($i == 1) { $geselecteerd = "selected"; }
+                                                                echo '<option value="'.$row['idWeerData'].'"' . $geselecteerd . '>'.
+                                                                's:' . $row['stadsnaam'].
+                                                                ',m: ' .$row['main'].
+                                                                ',t: ' .$row['temperatuur'].
+                                                                ',kb: ' .$row['kortebeschrijving'].
+                                                                ',ld: ' .$row['luchtdruk'].
+                                                                ',v: ' .$row['vochtigheid'].
+                                                                ',tmin: ' .$row['temperatuur_min'].
+                                                                ',tmax: ' .$row['temperatuur_max'].
+                                                                ',ws: ' .$row['windsnelheid'].
+                                                                ',wr: ' .$row['windrichting'].
+                                                                ',b: ' .$row['bewolktheid'].
+                                                                '</option>';
+                                                                $i++;
+                                                            }
+                                                            ?>
+                                                            <?php 
+                                                                /*
                                                                 $filter = [];
                                                                 $options = [
                                                                     'sort' => ['$natural' => -1], //sorteren volgens laatst toegevoegd item
@@ -424,6 +509,7 @@ if($flag) {
                                                                     '</option>';
                                                                     $i++;
                                                                 }
+                                                                */
                                                             ?>
 
                                                         </select>

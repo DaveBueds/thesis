@@ -1,25 +1,29 @@
 <?php
-  require_once('mongodbconn.php');
+  require 'database.php';
   $typeEvent = "";
 
-    if(isset($_POST['btn_ed'])){
-        $typeEvent = $_POST['typeEvent'];
+  $valid = true;
 
-    if(!$typeEvent ){
-        $flag = 5;
-    }
-    else{
-        $insRec       = new MongoDB\Driver\BulkWrite;
-        $insRec->insert(['typeEvent' =>$typeEvent]);
-        $writeConcern = new MongoDB\Driver\WriteConcern(MongoDB\Driver\WriteConcern::MAJORITY, 1000);
-        $result       = $manager->executeBulkWrite('thesis.eventdata', $insRec, $writeConcern);
+  if(!empty($_POST)){
+    $typeEvent = $_POST['typeEvent'];
 
-        if($result->getInsertedCount()){
-            $flag = 3;
-        }else{
-            $flag = 2;
-        }
+    if(empty($typeEvent) ){
+      $flag = 5;
+      $valid = false;
     }
+
+    if($valid){
+      $pdo = Database::connect();
+      $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+      $sql = "INSERT INTO EventData (typeEvent) values(?)";
+      $q = $pdo->prepare($sql);
+      $q->execute(array($typeEvent));
+      Database::disconnect();
+      $flag = 3;
+      header("Location: index.php?flag=$flag");
+    }
+    else {
+      $flag = 2;
+      header("Location: index.php?flag=$flag");
+    }        
   }
-  header("Location: index.php?flag=$flag");
-  exit;
