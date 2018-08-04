@@ -36,7 +36,7 @@ if($flag) {
                     </div>
                 </div>
                 
-                <?php if($flag == 2 || $flag == 5 || $flag == 6) { ?>
+                <?php if($flag == 2 || $flag == 5 || $flag == 6 || $flag == 7) { ?>
                     <div class="callout alert small" data-closable="" data-alert>
                       <h5><?php echo $message; ?></h5>
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
@@ -505,11 +505,15 @@ if($flag) {
                 processing: true,
                 serverSide: true,
                 ajax: "server_processing.php",
-                "rowCallback": function( row, data ) {
+                rowCallback: function( row, data ) {
                     if ( $.inArray(data.DT_RowId, selected) !== -1 ) {
                         $(row).addClass('selected');
                     }
                 }
+            })
+            .on( 'error.dt', function ( e, settings, techNote, message ) {
+                $vlag = 7;
+                window.location.href = window.location.pathname + "?flag=" + $vlag ; 
             } );
 
 
