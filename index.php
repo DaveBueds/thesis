@@ -136,42 +136,6 @@ if($flag) {
                                                                 $i++;
                                                             }
                                                             ?>
-
-                                                            <?php 
-                                                            /*
-                                                                $filter = [];
-                                                                $options = [
-                                                                    'sort' => ['$natural' => -1], //sorteren volgens laatst toegevoegd item
-                                                                ];
-
-                                                                $query = new MongoDB\Driver\Query($filter, $options);
-                                                                $cursor = $manager->executeQuery('thesis.mechanischedata', $query);
-
-                                                                $i = 1;
-                                                                $geselecteerd = "";
-                                                                foreach ($cursor as $document) { 
-                                                                    if($i == 1) { $geselecteerd = "selected"; }
-                                                                    else {$geselecteerd = "";}
-                                                                    echo '<option value="' . $document->_id .'"' . $geselecteerd . '>'.
-                                                                    't: ' . $document->toespoor .
-                                                                    ',c: ' . $document->camber .
-                                                                    ',b: ' . $document->banden .
-                                                                    ',bd: ' . $document->bandendruk .
-                                                                    ',h: ' . $document->hoogte .
-                                                                    ',v: ' . $document->veer .
-                                                                    ',tv: ' . $document->torsieveer .
-                                                                    ',LR_H: ' . $document->LR_HSB .
-                                                                    ',LR_L: ' . $document->LR_LSB .
-                                                                    ',LR_R: ' . $document->LR_R .
-                                                                    ',M_H: ' . $document->M_HSB .
-                                                                    ',M_L: ' . $document->M_LSB .
-                                                                    ',M_R: ' . $document->M_R .
-                                                                    '</option>';
-                                                                    $i++;
-                                                                }
-                                                                */
-                                                            ?>
-
                                                         </select>
                                                     </label>
                                                 </div>
@@ -318,31 +282,6 @@ if($flag) {
                                                                 $i++;
                                                             }
                                                             ?>
-                                                            <?php 
-                                                                /*
-                                                                $filter = [];
-                                                                $options = [
-                                                                    'sort' => ['$natural' => -1], //sorteren volgens laatst toegevoegd item
-                                                                ];
-
-                                                                $query = new MongoDB\Driver\Query($filter, $options);
-                                                                $cursor = $manager->executeQuery('thesis.circuitdata', $query);
-
-                                                                $i = 1;
-                                                                $geselecteerd = "";
-                                                                foreach ($cursor as $document) { 
-                                                                    if($i == 1) { $geselecteerd = "selected"; }
-                                                                    else {$geselecteerd = "";}
-                                                                    echo '<option value="' . $document->_id .'"' . $geselecteerd . '>'.
-                                                                    'locatie: ' . $document->locatienaam .
-                                                                    ', wegtype: ' . $document->wegtype .
-                                                                    ', ondergrond: ' . $document->ondergrond .
-                                                                    '</option>';
-                                                                    $i++;
-                                                                }
-                                                                */
-                                                            ?>
-
                                                         </select>
                                                     </label>
                                                 </div>
@@ -405,29 +344,6 @@ if($flag) {
                                                                 $i++;
                                                             }
                                                             ?>
-                                                            <?php 
-                                                            /*
-                                                                $filter = [];
-                                                                $options = [
-                                                                    'sort' => ['$natural' => -1], //sorteren volgens laatst toegevoegd item
-                                                                ];
-
-                                                                $query = new MongoDB\Driver\Query($filter, $options);
-                                                                $cursor = $manager->executeQuery('thesis.eventdata', $query);
-
-                                                                $i = 1;
-                                                                $geselecteerd = "";
-                                                                foreach ($cursor as $document) { 
-                                                                    if($i == 1) { $geselecteerd = "selected"; }
-                                                                    else {$geselecteerd = "";}
-                                                                    echo '<option value="' . $document->_id .'"' . $geselecteerd . '>'.
-                                                                    'type: ' . $document->typeEvent .
-                                                                    '</option>';
-                                                                    $i++;
-                                                                }
-                                                                */
-                                                            ?>
-
                                                         </select>
                                                     </label>
                                                 </div>
@@ -479,39 +395,6 @@ if($flag) {
                                                                 $i++;
                                                             }
                                                             ?>
-                                                            <?php 
-                                                                /*
-                                                                $filter = [];
-                                                                $options = [
-                                                                    'sort' => ['$natural' => -1], //sorteren volgens laatst toegevoegd item
-                                                                ];
-
-                                                                $query = new MongoDB\Driver\Query($filter, $options);
-                                                                $cursor = $manager->executeQuery('thesis.weerdata', $query);
-
-                                                                $i = 1;
-                                                                $geselecteerd = "";
-                                                                foreach ($cursor as $document) { 
-                                                                    if($i == 1) { $geselecteerd = "selected"; }
-                                                                    else {$geselecteerd = "";}
-                                                                    echo '<option value="' . $document->_id .'"' . $geselecteerd . '>'.
-                                                                    $document->stadsnaam .
-                                                                    ', m: ' . $document->main .
-                                                                    ', t: ' . $document->temperatuur .
-                                                                    ', sd: ' . $document->kortebeschrijving .
-                                                                    ', ld: ' . $document->luchtdruk .
-                                                                    ', v: ' . $document->vochtigheid .
-                                                                    ', tmin: ' . $document->temperatuur_min .
-                                                                    ', tmax: ' . $document->temperatuur_max .
-                                                                    ', ws: ' .$document->windsnelheid .
-                                                                    ', wr: ' .$document->windrichting .
-                                                                    ', b: ' .$document->bewolktheid .
-                                                                    '</option>';
-                                                                    $i++;
-                                                                }
-                                                                */
-                                                            ?>
-
                                                         </select>
                                                     </label>
                                                 </div>
@@ -640,11 +523,6 @@ if($flag) {
                 $ed_val = parseInt($('#ed_settings').val());
                 $wd_val = parseInt($('#wd_settings').val());
 
-                console.log($md_val);
-                console.log($cd_val);
-                console.log($ed_val);
-                console.log($wd_val);
-
                 if ( $md_val == 0 || $cd_val == 0 || $ed_val == 0 || $wd_val == 0  ) {
                     $vlag = 6;
                     window.location.href = window.location.pathname + "?flag=" + $vlag ; 
@@ -664,9 +542,7 @@ if($flag) {
                         data.push(myObj);
                     });
 
-                    console.log(data);
                     var json = JSON.stringify(data);
-                    console.log(json);
                     
                     
                     $.ajax({
@@ -674,14 +550,8 @@ if($flag) {
                         type: "POST",
                         data: {'data': json},
                         dataType: "JSON",
-                        //contentType: "application/json; charset=utf-8",
                         success: function( data ) {
-                            console.log("success");
-                            //console.log(data.status);
-                            //console.log(data.length);
                             $vlag = data;
-                            console.log(data);
-                            console.log("thesis/index.php?flag=" + $vlag);
                             window.location.href = window.location.pathname + "?flag=" + $vlag ;
                             
                         }
@@ -697,7 +567,6 @@ if($flag) {
 
 
             $(function() {
-                //$('#md_new_block').hide(); 
                 $('#md_settings').change(function(){
                     if($('#md_settings').val() !== 0 ) {
                         $('.md_new_block').show(); 
@@ -786,11 +655,9 @@ if($flag) {
             windrichting.value = parseInt(jsonObject.wind.deg);
             bewolktheid.value = parseInt(jsonObject.clouds.all);
 
-            //console.log(jsonObject.weather[0].main);
         }
 
         function httpRequestAsync(url, callback) {
-            console.log("hello");
             var httpRequest = new XMLHttpRequest();
             httpRequest.onreadystatechange = () => { 
                 if (httpRequest.readyState == 4 && httpRequest.status == 200)
