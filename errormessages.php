@@ -14,9 +14,4 @@ $messages = array(
     6=>'Duid alle velden in de accordian aan voor het koppelen.'
 );
 
-
-$mongoDbname  =  'thesis';
-//$mongoTblName =  'products';
-$manager     =   new MongoDB\Driver\Manager("mongodb://localhost:27017");
-
 ?>

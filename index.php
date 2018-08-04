@@ -1,6 +1,6 @@
 <?php
 
-require_once('mongodbconn.php');
+require_once('errormessages.php');
 include 'database.php';
 $pdo = Database::connect();
 
