@@ -635,10 +635,10 @@ if($flag) {
                 var data = [];
                 var table = $('#example').DataTable();
 
-                $md_val = $('#md_settings').val();
-                $cd_val = $('#cd_settings').val();
-                $ed_val = $('#ed_settings').val();
-                $wd_val = $('#wd_settings').val();
+                $md_val = parseInt($('#md_settings').val());
+                $cd_val = parseInt($('#cd_settings').val());
+                $ed_val = parseInt($('#ed_settings').val());
+                $wd_val = parseInt($('#wd_settings').val());
 
                 console.log($md_val);
                 console.log($cd_val);
@@ -686,6 +686,7 @@ if($flag) {
                             
                         }
                     });
+                    
                     
                 }
 
