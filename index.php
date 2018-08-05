@@ -36,7 +36,7 @@ if($flag) {
                     </div>
                 </div>
                 
-                <?php if($flag == 2 || $flag == 5 || $flag == 6 || $flag == 7) { ?>
+                <?php if($flag == 2 || $flag == 5 || $flag == 6 || $flag == 7  || $flag == 8) { ?>
                     <div class="callout alert small" data-closable="" data-alert>
                       <h5><?php echo $message; ?></h5>
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
@@ -278,6 +278,7 @@ if($flag) {
                                                                 'locatie:' . $row['locatienaam'].
                                                                 ',wegtype: ' .$row['wegtype'].
                                                                 ',ondergrond: ' .$row['ondergrond'].
+                                                                ',typeEvent: ' .$row['typeEvent'].
                                                                 '</option>';
                                                                 $i++;
                                                             }
@@ -311,50 +312,18 @@ if($flag) {
                                                         </select>
                                                     </label>
                                                 </div>
-                                                <div class="cd_new_block medium-12 cell" style="display: hide;">
-                                                    <button name="btn_cd" type="button submit" class="button float-right">Save</button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </li>
-                            <li class="accordion-item" data-accordion-item>
-                                <a href="#" class="accordion-title">Event data</a>
-                                <div class="accordion-content" data-tab-content>
-                                    <form action="create_ed.php" method="post">
-                                        <div class="grid-container">
-                                            <div class="grid-x grid-padding-x">
 
-                                                <div class="medium-12 cell">
-                                                    <label>Settings:
-                                                        <select name="settings" id="ed_settings">
-                                                            <option value="0">Maak/Selecteer setting</option>
-                                                            
-                                                            <?php 
-                                                            $sql = 'SELECT * FROM EventData ORDER BY idEventData ASC';
-
-                                                            $i = 1;
-                                                            $geselecteerd = "";
-                                                            foreach ($pdo->query($sql) as $row) {
-                                                                if($i == 1) { $geselecteerd = "selected"; }
-                                                                echo '<option value="'.$row['idEventData'].'"' . $geselecteerd . '>'.
-                                                                'typeEvent:' . $row['typeEvent'].
-                                                                '</option>';
-                                                                $i++;
-                                                            }
-                                                            ?>
+                                                <div class="ed_new_block medium-6 cell">
+                                                    <label>Type event:
+                                                        <select name="typeEvent">
+                                                            <option value="Acceleratie">Acceleratie</option>
+                                                            <option value="SkidPad">Skid Pad</option>
                                                         </select>
                                                     </label>
                                                 </div>
 
-                                                <div class="ed_new_block medium-12 cell">
-                                                    <label>Type event:
-                                                        <input name="typeEvent" type="text">
-                                                    </label>
-                                                </div>
-                                                <div class="ed_new_block medium-12 cell" style="display: hide;">
-                                                    <button name="btn_ed" type="button submit" class="button float-right">Save</button>
+                                                <div class="cd_new_block medium-12 cell" style="display: hide;">
+                                                    <button name="btn_cd" type="button submit" class="button float-right">Save</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -524,17 +493,16 @@ if($flag) {
 
                 $md_val = parseInt($('#md_settings').val());
                 $cd_val = parseInt($('#cd_settings').val());
-                $ed_val = parseInt($('#ed_settings').val());
                 $wd_val = parseInt($('#wd_settings').val());
 
-                if ( $md_val == 0 || $cd_val == 0 || $ed_val == 0 || $wd_val == 0  ) {
+                if ( $md_val == 0 || $cd_val == 0 || $wd_val == 0  ) {
                     $vlag = 6;
                     window.location.href = window.location.pathname + "?flag=" + $vlag ; 
                 }
                 else {
                     $( "tr.selected" ).each(function( index ) {
                         
-                        var myObj = { "md_val": $md_val, "cd_val": $cd_val, "ed_val": $ed_val, "wd_val": $wd_val};
+                        var myObj = { "md_val": $md_val, "cd_val": $cd_val, "wd_val": $wd_val};
                         myObj["tijd"] = table.row(this).data()[1];
                         myObj["type"] = table.row(this).data()[2];
                         myObj["data"] = table.row(this).data()[3];
@@ -589,14 +557,6 @@ if($flag) {
                     } 
                 });
 
-                $('#ed_settings').change(function(){
-                    if($('#ed_settings').val() == 0 ) {
-                        $('.ed_new_block').show(); 
-                    } 
-                    else {
-                        $('.ed_new_block').hide(); 
-                    } 
-                });
 
                 $('#wd_settings').change(function(){
                     if($('#wd_settings').val() == 0 ) {
@@ -637,7 +597,8 @@ if($flag) {
 
         function findWeatherDetails() {
             if (searchInput.value === "") {
-
+                $vlag = 8;
+                window.location.href = window.location.pathname + "?flag=" + $vlag ;
             }
             else {
                 let searchLink = "https://api.openweathermap.org/data/2.5/weather?q=" + searchInput.value + "&appid="+appKey;
@@ -664,8 +625,13 @@ if($flag) {
         function httpRequestAsync(url, callback) {
             var httpRequest = new XMLHttpRequest();
             httpRequest.onreadystatechange = () => { 
-                if (httpRequest.readyState == 4 && httpRequest.status == 200)
+                if (httpRequest.readyState == 4 && httpRequest.status == 200){
                     callback(httpRequest.responseText);
+                }
+                if (httpRequest.status == 404) {
+                    $vlag = 8;
+                    window.location.href = window.location.pathname + "?flag=" + $vlag ;
+                }
             }
             httpRequest.open("GET", url, true); // true for asynchronous 
             httpRequest.send();

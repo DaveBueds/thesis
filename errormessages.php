@@ -12,7 +12,8 @@ $messages = array(
     4=>'Document updaten succesvol gelukt.', 
     5=>'Alle velden zijn verplicht in te vullen.' ,
     6=>'Duid alle velden in de accordian aan voor het koppelen.',
-    7=>'Fout bij het inladen van de telemetriedata.'
+    7=>'Fout bij het inladen van de telemetriedata.',
+    8=>'Gelieve een (correcte) stadsnaam in te geven bij weerdata.'
 );
 
 ?>

@@ -22,7 +22,6 @@ if ( !empty($_POST)) {
 
 			$md_val = $en_data[$i]->md_val;
 		    $cd_val = $en_data[$i]->cd_val;
-		    $ed_val = $en_data[$i]->ed_val;
 		    $wd_val = $en_data[$i]->wd_val;
 		    $tijd = $en_data[$i]->tijd;
 		    $type = $en_data[$i]->type;
@@ -34,9 +33,9 @@ if ( !empty($_POST)) {
 
 	      	$pdo = Database::connect();
 	      	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-	      	$sql = "INSERT INTO Trainingset (md_val,cd_val,ed_val,wd_val,tijd,type,data,unit,gpsid,latitude,longitude) values(?,?,?,?,?,?,?,?,?,?,?)";
+	      	$sql = "INSERT INTO Trainingset (md_val,cd_val,wd_val,tijd,type,data,unit,gpsid,latitude,longitude) values(?,?,?,?,?,?,?,?,?,?)";
 	      	$q = $pdo->prepare($sql);
-	      	$q->execute(array($md_val,$cd_val,$ed_val,$wd_val,$tijd,$type,$data,$unit,$gpsid,$latitude,$longitude));
+	      	$q->execute(array($md_val,$cd_val,$wd_val,$tijd,$type,$data,$unit,$gpsid,$latitude,$longitude));
 	      	Database::disconnect();
 		}
 
