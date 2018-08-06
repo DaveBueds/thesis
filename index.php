@@ -140,25 +140,25 @@ if($flag) {
                                                     </label>
                                                 </div>
 
-                                                <div class="md_new_block medium-12 cell" style="display: hide;">
+                                                <div class="md_new_block medium-12 cell">
                                                     <p>Maak hier een nieuwe setting.</p>
                                                 </div>
 
-                                                <div class="md_new_block medium-6 cell" style="display: hide;">
+                                                <div class="md_new_block medium-6 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg toespoor">Toespoor (mm):</span>
                                                         <input name="toespoor" type="number" value="100" step="1" required>
                                                     </label>
                                                 </div>
 
-                                                <div class="md_new_block medium-6 cell" style="display: hide;">
+                                                <div class="md_new_block medium-6 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Front view">Camber (°):</span>
                                                         <input name="camber" type="number" value="2" step="1" required>
                                                     </label>
                                                 </div>
 
-                                                <div class="md_new_block medium-4 cell" style="display: hide;">
+                                                <div class="md_new_block medium-4 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg bandentype">Bandentype:</span>
                                                         <select name="banden" required>
@@ -168,21 +168,21 @@ if($flag) {
                                                     </label>
                                                 </div>
                                                 
-                                                <div class="md_new_block medium-4 cell" style="display: hide;">
+                                                <div class="md_new_block medium-4 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg bandendruk">Bandendruk (bar):</span>
                                                         <input name="bandendruk" type="number" value="2" step="0.1" required>
                                                     </label>
                                                 </div>
 
-                                                <div class="md_new_block medium-4 cell" style="display: hide;">
+                                                <div class="md_new_block medium-4 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg hoogte">Hoogte (mm):</span>
                                                         <input name="hoogte" type="number" value="3" step="0.5" required>
                                                     </label>
                                                 </div>
 
-                                                <div class="md_new_block medium-6 cell" style="display: hide;">
+                                                <div class="md_new_block medium-6 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg veer">Veer:</span>
                                                         <select name="veer" required>
@@ -192,7 +192,7 @@ if($flag) {
                                                     </label>
                                                 </div>
 
-                                                <div class="md_new_block medium-6 cell" style="display: hide;">
+                                                <div class="md_new_block medium-6 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg torsieveer">Torsieveer:</span>
                                                         <select name="torsieveer" required>
@@ -203,45 +203,45 @@ if($flag) {
                                                 </div>    
 
 
-                                                <div class="md_new_block medium-4 cell" style="display: hide;">
+                                                <div class="md_new_block medium-4 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg demper">LR HSB:</span>
                                                         <input name="LR_HSB" type="number" min="1" max="18" value="9" step="1" required>
                                                     </label>
                                                 </div>
-                                                <div class="md_new_block medium-4 cell" style="display: hide;">
+                                                <div class="md_new_block medium-4 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg demper">LR LSB:</span>
                                                         <input name="LR_LSB" type="number" min="1" max="18" value="9" step="1" required>
                                                     </label>
                                                 </div>
-                                                <div class="md_new_block medium-4 cell" style="display: hide;">
+                                                <div class="md_new_block medium-4 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg demper">LR R:</span>
                                                         <input name="LR_R" type="number" min="1" max="18" value="9" step="1" required>
                                                     </label>
                                                 </div>
 
-                                                <div class="md_new_block medium-4 cell" style="display: hide;">
+                                                <div class="md_new_block medium-4 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg demper">M HSB:</span>
                                                         <input name="M_HSB" type="number" min="1" max="18" value="9" step="1" required>
                                                     </label>
                                                 </div>
-                                                <div class="md_new_block medium-4 cell" style="display: hide;">
+                                                <div class="md_new_block medium-4 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg demper">M LSB:</span>
                                                         <input name="M_LSB" type="number" min="1" max="18" value="9" step="1" required>
                                                     </label>
                                                 </div>
-                                                <div class="md_new_block medium-4 cell" style="display: hide;">
+                                                <div class="md_new_block medium-4 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Uitleg demper">M R:</span>
                                                         <input name="M_R" type="number" min="1" max="18" value="9" step="1" required>
                                                     </label>
                                                 </div>
 
-                                                <div class="md_new_block medium-12 cell" style="display: hide;">
+                                                <div class="md_new_block medium-12 cell">
                                                     <button name="btn_md" type="button submit" class="button float-right">Save</button>
                                                 </div>
                                             </div>
@@ -287,7 +287,7 @@ if($flag) {
                                                     </label>
                                                 </div>
 
-                                                <div class="cd_new_block medium-12 cell" style="display: hide;">
+                                                <div class="cd_new_block medium-12 cell">
                                                     <p>Maak hier een nieuwe setting.</p>
                                                 </div>
                                                 <div class="cd_new_block medium-6 cell">
@@ -313,7 +313,7 @@ if($flag) {
                                                     </label>
                                                 </div>
 
-                                                <div class="ed_new_block medium-6 cell">
+                                                <div class="cd_new_block medium-6 cell">
                                                     <label>Type event:
                                                         <select name="typeEvent">
                                                             <option value="Acceleratie">Acceleratie</option>
@@ -322,7 +322,7 @@ if($flag) {
                                                     </label>
                                                 </div>
 
-                                                <div class="cd_new_block medium-12 cell" style="display: hide;">
+                                                <div class="cd_new_block medium-12 cell">
                                                     <button name="btn_cd" type="button submit" class="button float-right">Save</button>
                                                 </div>
                                             </div>
@@ -537,33 +537,44 @@ if($flag) {
 
             $('.callout').closest('[data-alert]').delay(5000).fadeOut(1000);
 
+            if(parseInt($('#md_settings').val()) !== 0 ) {
+                $('.md_new_block').hide(); 
+            } 
+
+            if(parseInt($('#cd_settings').val()) !== 0 ) {
+                $('.cd_new_block').hide(); 
+            } 
+
+            if(parseInt($('#wd_settings').val()) !== 0 ) {
+                $('.wd_new_block').hide(); 
+            }
 
             $(function() {
                 $('#md_settings').change(function(){
-                    if($('#md_settings').val() !== 0 ) {
-                        $('.md_new_block').show(); 
+                    if(parseInt($('#md_settings').val()) !== 0 ) {
+                        $('.md_new_block').hide(); 
                     } 
                     else {
-                        $('.md_new_block').hide(); 
+                        $('.md_new_block').show(); 
                     } 
                 });
 
                 $('#cd_settings').change(function(){
-                    if($('#cd_settings').val() == 0 ) {
-                        $('.cd_new_block').show(); 
+                    if(parseInt($('#cd_settings').val()) !== 0 ) {
+                        $('.cd_new_block').hide(); 
                     } 
                     else {
-                        $('.cd_new_block').hide(); 
+                        $('.cd_new_block').show(); 
                     } 
                 });
 
 
                 $('#wd_settings').change(function(){
-                    if($('#wd_settings').val() == 0 ) {
-                        $('.wd_new_block').show(); 
+                    if(parseInt($('#wd_settings').val()) !== 0 ) {
+                        $('.wd_new_block').hide(); 
                     } 
                     else {
-                        $('.wd_new_block').hide(); 
+                        $('.wd_new_block').show(); 
                     } 
                 });
             });
