@@ -62,7 +62,7 @@ if($flag) {
                     <div class="cell medium-8 medium-cell-block-y">
                         <h4>Telemetrie data</h4>
 
-                        <table id="example" class="display" style="width:100%">
+                        <table id="sensortabel" class="display" style="width:100%">
                             <thead>
                                 <tr>
                                     <th>id</th>
@@ -144,34 +144,17 @@ if($flag) {
                                                     <p>Maak hier een nieuwe setting.</p>
                                                 </div>
 
-                                                <div class="md_new_block medium-6 cell">
+                                                <div class="md_new_block medium-4 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg toespoor">Toespoor (mm):</span>
+                                                        <span data-tooltip class="top" title="Uitleg toespoor">Toe (mm):</span>
                                                         <input name="toespoor" type="number" value="100" step="1" required>
                                                     </label>
                                                 </div>
 
-                                                <div class="md_new_block medium-6 cell">
+                                                <div class="md_new_block medium-4 cell">
                                                     <label>
                                                         <span data-tooltip class="top" title="Front view">Camber (°):</span>
                                                         <input name="camber" type="number" value="2" step="1" required>
-                                                    </label>
-                                                </div>
-
-                                                <div class="md_new_block medium-4 cell">
-                                                    <label>
-                                                        <span data-tooltip class="top" title="Uitleg bandentype">Bandentype:</span>
-                                                        <select name="banden" required>
-                                                            <option value="C17 slick">C17 slick</option>
-                                                            <option value="C17 wet">C17 wet</option>
-                                                        </select>
-                                                    </label>
-                                                </div>
-                                                
-                                                <div class="md_new_block medium-4 cell">
-                                                    <label>
-                                                        <span data-tooltip class="top" title="Uitleg bandendruk">Bandendruk (bar):</span>
-                                                        <input name="bandendruk" type="number" value="2" step="0.1" required>
                                                     </label>
                                                 </div>
 
@@ -181,6 +164,25 @@ if($flag) {
                                                         <input name="hoogte" type="number" value="3" step="0.5" required>
                                                     </label>
                                                 </div>
+
+                                                <div class="md_new_block medium-6 cell">
+                                                    <label>
+                                                        <span data-tooltip class="top" title="Uitleg bandentype">Bandentype:</span>
+                                                        <select name="banden" required>
+                                                            <option value="C17 slick">C17 slick</option>
+                                                            <option value="C17 wet">C17 wet</option>
+                                                        </select>
+                                                    </label>
+                                                </div>
+                                                
+                                                <div class="md_new_block medium-6 cell">
+                                                    <label>
+                                                        <span data-tooltip class="top" title="Uitleg bandendruk">Bandendruk (bar):</span>
+                                                        <input name="bandendruk" type="number" value="2" step="0.1" required>
+                                                    </label>
+                                                </div>
+
+                                                
 
                                                 <div class="md_new_block medium-6 cell">
                                                     <label>
@@ -459,8 +461,8 @@ if($flag) {
         $(document).ready(function() {
             var selected = [];
 
-            $('#example').DataTable( {
-                lengthMenu: [[10, 50, 100, 1000, 2000, -1], [10, 50, 100, 1000, 2000, "All"]],
+            $('#sensortabel').DataTable( {
+                lengthMenu: [[5, 10, 50, 100, 1000, 2000, -1], [5, 10, 50, 100, 1000, 2000, "All"]],
                 select: true,
                 language: {
                     select: {
@@ -486,10 +488,24 @@ if($flag) {
             } );
 
 
+
+            function cal_avg(lengte, data) {
+                var avg = 0;
+                for (var i = 0; i <= lengte; i++) {
+                    if(i == lengte) {
+                        avg = avg / lengte;
+                        break;
+                    }
+                    avg += parseInt(data[i]);
+                }
+                return avg;
+            }
+
+
             
             $("#btn_koppel").click(function(){
                 var data = [];
-                var table = $('#example').DataTable();
+                var table = $('#sensortabel').DataTable();
 
                 $md_val = parseInt($('#md_settings').val());
                 $cd_val = parseInt($('#cd_settings').val());
@@ -500,6 +516,23 @@ if($flag) {
                     window.location.href = window.location.pathname + "?flag=" + $vlag ; 
                 }
                 else {
+                    
+                    //Dynamische variabelen in window, hierdoor geen elendige lange code
+                    //Telkens er een nieuw type geselecteerd is wordt dit toegevoegd aan typearray
+                    var typearray = [];
+                    $( "tr.selected" ).each(function( index ) {
+                        var myObj = {};
+                        myObj["type"] = table.row(this).data()[2];
+                        if($.inArray(myObj["type"], typearray) == -1) {
+                            typearray.push(myObj["type"]);
+                        }
+                    });
+
+                    //typearray wordt gebruikt om variabele met zelfde naam te maken
+                    for (var i=0;i<typearray.length;i+=1){
+                      window[typearray[i]] = [];
+                    }
+
                     $( "tr.selected" ).each(function( index ) {
                         
                         var myObj = { "md_val": $md_val, "cd_val": $cd_val, "wd_val": $wd_val};
@@ -511,13 +544,32 @@ if($flag) {
                         myObj["latitude"] = table.row(this).data()[6];
                         myObj["longitude"] = table.row(this).data()[7];
 
+                        if (parseInt(myObj["data"]) < 0) {
+                            console.log("Minder als 0");
+                        }
+
+                        //wanneer type gelijk is wordt de data aan de variabel met naam type toegevoegd
+                        switch(myObj["type"]) {
+                            case myObj["type"]:
+                                window[myObj["type"]].push(myObj["data"]);
+                                break;
+                            default:
+                                break;
+                        }
+
                         data.push(myObj);
                     });
+
+                    //de array met naam 'type'_avg wordt gebruikt om het gemiddelde van de 'type' array te berekenen 
+                    for (var i=0;i<typearray.length;i+=1){
+                      window[typearray[i]+'_avg'] = cal_avg(parseInt(window[typearray[i]].length), window[typearray[i]]);
+                    }
+                    console.log(window);
 
                     var json = JSON.stringify(data);
                     
                     
-                    $.ajax({
+                    /*$.ajax({
                         url: "koppeldata.php",
                         type: "POST",
                         data: {'data': json},
@@ -528,6 +580,7 @@ if($flag) {
                             
                         }
                     });
+                    */
                     
                     
                 }
