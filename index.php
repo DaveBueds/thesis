@@ -70,6 +70,7 @@ if($flag) {
                                     <th>Type</th>
                                     <th>Data</th>
                                     <th>Unit</th>
+                                    <th>Typeid</th>
                                     <th>GPSid</th>
                                     <th>Latitude</th>
                                     <th>Longitude</th>
@@ -82,6 +83,7 @@ if($flag) {
                                     <th>Type</th>
                                     <th>Data</th>
                                     <th>Unit</th>
+                                    <th>Typeid</th>
                                     <th>GPSid</th>
                                     <th>Latitude</th>
                                     <th>Longitude</th>
@@ -462,7 +464,7 @@ if($flag) {
             var selected = [];
 
             $('#sensortabel').DataTable( {
-                lengthMenu: [[5, 10, 50, 100, 1000, 2000, -1], [5, 10, 50, 100, 1000, 2000, "All"]],
+                lengthMenu: [[50, 100, 1000, 2000, -1], [50, 100, 1000, 2000, "All"]],
                 select: true,
                 language: {
                     select: {
@@ -491,14 +493,35 @@ if($flag) {
 
             function cal_avg(lengte, data) {
                 var avg = 0;
-                for (var i = 0; i <= lengte; i++) {
-                    if(i == lengte) {
-                        avg = avg / lengte;
+                var nl = lengte;
+                var i = 0;
+
+                //bij negatief getal, verwijderen uit array, lengte aanpassen
+                for (i = 0; i < nl; i++) {
+                    if(parseFloat(data[i]) < 0){
+                        var index = data.indexOf(data[i]);
+                        data.splice(index, 1);
+                        nl--;
+                        i--;
+                    }
+                }
+
+                for(var j = 0; j <= data.length; j++) {
+                    if(j == data.length) {
+                        avg = avg / data.length;
                         break;
                     }
-                    avg += parseInt(data[i]);
+                    //bereken lopende som               
+                    avg += parseFloat(data[j]);
                 }
-                return avg;
+                if(isNaN(avg)) {
+                    avg = 0;
+                    return avg;
+                }
+                else {
+                    var avg_r = Math.round(avg*1000)/1000; //afronden op 3 na komma
+                    return avg_r;
+                }
             }
 
 
@@ -516,60 +539,78 @@ if($flag) {
                     window.location.href = window.location.pathname + "?flag=" + $vlag ; 
                 }
                 else {
-                    
+                    var myObj = { "md_val": $md_val, "cd_val": $cd_val, "wd_val": $wd_val};
+
                     //Dynamische variabelen in window, hierdoor geen elendige lange code
                     //Telkens er een nieuw type geselecteerd is wordt dit toegevoegd aan typearray
                     var typearray = [];
+                    var timearray = [];
+
+
                     $( "tr.selected" ).each(function( index ) {
-                        var myObj = {};
-                        myObj["type"] = table.row(this).data()[2];
-                        if($.inArray(myObj["type"], typearray) == -1) {
-                            typearray.push(myObj["type"]);
+                        var type = table.row(this).data()[5];
+                        var tijd = table.row(this).data()[1];
+                        if($.inArray("type_"+type, typearray) == -1) {
+                            typearray.push("type_"+type);
                         }
+                        timearray.push(new Date(tijd));
                     });
+                    console.log(typearray);
+
+                    //sorteren van tijden oplopen
+                    var date_sort_asc = function (date1, date2) {
+                      if (date1 > date2) return 1;
+                      if (date1 < date2) return -1;
+                      return 0;
+                    };
+
+                    timearray.sort(date_sort_asc);
+                    var beginTijd = timearray[0];
+                    var eindTijd = timearray[timearray.length -1];
+                    
+                    var totaalTijd = (eindTijd.getTime() - beginTijd.getTime())/1000; //tijd in seconden
+                    myObj["totaalTijd"] = totaalTijd;
 
                     //typearray wordt gebruikt om variabele met zelfde naam te maken
                     for (var i=0;i<typearray.length;i+=1){
                       window[typearray[i]] = [];
                     }
 
+
+                    
                     $( "tr.selected" ).each(function( index ) {
                         
-                        var myObj = { "md_val": $md_val, "cd_val": $cd_val, "wd_val": $wd_val};
-                        myObj["tijd"] = table.row(this).data()[1];
-                        myObj["type"] = table.row(this).data()[2];
-                        myObj["data"] = table.row(this).data()[3];
-                        myObj["unit"] = table.row(this).data()[4];
-                        myObj["gpsid"] = table.row(this).data()[5];
-                        myObj["latitude"] = table.row(this).data()[6];
-                        myObj["longitude"] = table.row(this).data()[7];
-
-                        if (parseInt(myObj["data"]) < 0) {
-                            console.log("Minder als 0");
-                        }
+                        var type = table.row(this).data()[5];
+                        var content = table.row(this).data()[3];
 
                         //wanneer type gelijk is wordt de data aan de variabel met naam type toegevoegd
-                        switch(myObj["type"]) {
-                            case myObj["type"]:
-                                window[myObj["type"]].push(myObj["data"]);
+                        switch("type_"+type) {
+                            case "type_"+type:
+                                window["type_"+type].push(content);
                                 break;
                             default:
+                                //window["type_"+type].push(0);
                                 break;
                         }
-
-                        data.push(myObj);
                     });
 
                     //de array met naam 'type'_avg wordt gebruikt om het gemiddelde van de 'type' array te berekenen 
+                    //elk type wordt aan json toegevoegd
                     for (var i=0;i<typearray.length;i+=1){
-                      window[typearray[i]+'_avg'] = cal_avg(parseInt(window[typearray[i]].length), window[typearray[i]]);
+                        var naam = typearray[i]+'_avg';
+                        window[typearray[i]+'_avg'] = cal_avg(parseFloat(window[typearray[i]].length), window[typearray[i]]);
+                        myObj[naam] = window[typearray[i]+'_avg'];
                     }
                     console.log(window);
 
+                    
+                    data.push(myObj);
+
                     var json = JSON.stringify(data);
+                    //console.log(json);
                     
                     
-                    /*$.ajax({
+                    $.ajax({
                         url: "koppeldata.php",
                         type: "POST",
                         data: {'data': json},
@@ -580,7 +621,6 @@ if($flag) {
                             
                         }
                     });
-                    */
                     
                     
                 }

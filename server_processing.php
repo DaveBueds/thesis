@@ -21,7 +21,7 @@
 // DB table to use
 $table = <<<EOT
  (
-    SELECT Data.idData, FROM_UNIXTIME(GPS.timestamp, '%d-%m-%Y %H:%i:%s') AS timestamp, DataTypeToSelect.type, Data.data, DataTypeToSelect.Unit, GPS.idGPS, GPS.decimalLatitude, GPS.decimalLongitude 
+    SELECT Data.idData, FROM_UNIXTIME(GPS.timestamp, '%Y-%m-%dT%H:%i:%s') AS timestamp, DataTypeToSelect.type, Data.data, DataTypeToSelect.Unit, DataTypeToSelect.idDataTypeToSelect,GPS.idGPS, GPS.decimalLatitude, GPS.decimalLongitude 
     FROM Data 
     INNER JOIN GPS ON Data.GPSId=GPS.idGPS
     INNER JOIN DataTypeToSelect ON Data.datatypeId=DataTypeToSelect.idDataTypeToSelect 
@@ -52,9 +52,10 @@ $columns = array(
     array( 'db' => 'type',              'dt' => 2 ),
     array( 'db' => 'data',              'dt' => 3 ),
     array( 'db' => 'Unit',              'dt' => 4 ),
-    array( 'db' => 'idGPS',             'dt' => 5 ),
-    array( 'db' => 'decimalLatitude',   'dt' => 6 ),
-    array( 'db' => 'decimalLongitude',  'dt' => 7 )
+    array( 'db' => 'idDataTypeToSelect','dt' => 5 ),
+    array( 'db' => 'idGPS',             'dt' => 6 ),
+    array( 'db' => 'decimalLatitude',   'dt' => 7 ),
+    array( 'db' => 'decimalLongitude',  'dt' => 8 )
 );
  
 // SQL server connection information
