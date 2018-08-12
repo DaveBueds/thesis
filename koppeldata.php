@@ -11,7 +11,7 @@ if ( !empty($_POST)) {
 	$en_data = json_decode($data);
 
 	if( empty($en_data) ) {
-		$flag = 5;
+		$flag = 3;
 		$valid = false;
 		echo json_encode($flag);
 	}
@@ -85,12 +85,12 @@ if ( !empty($_POST)) {
 	      	Database::disconnect();
 		}
 
-		$flag = 3;
+		$flag = 2;
 		echo json_encode($flag);
 		
     }
     else {
-    	$flag = 5;
+    	$flag = 3;
       	echo json_encode($flag);;
     }  
 }

@@ -36,14 +36,14 @@ if($flag) {
                     </div>
                 </div>
                 
-                <?php if($flag == 2 || $flag == 5 || $flag == 6 || $flag == 7  || $flag == 8) { ?>
+                <?php if($flag == 1 || $flag == 3 || $flag == 4 || $flag == 5  || $flag == 6 || $flag == 7) { ?>
                     <div class="callout alert small" data-closable="" data-alert>
                       <h5><?php echo $message; ?></h5>
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                <?php } elseif($flag && $flag != 2){ ?>
+                <?php } elseif($flag && $flag != 1){ ?>
                     <div class="callout success small" data-closable="" data-alert>
                       <h5><?php echo $message; ?></h5>
                       <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
@@ -485,7 +485,7 @@ if($flag) {
                 }
             })
             .on( 'error.dt', function ( e, settings, techNote, message ) {
-                $vlag = 7;
+                $vlag = 5;
                 window.location.href = window.location.pathname + "?flag=" + $vlag ; 
             } );
 
@@ -535,10 +535,15 @@ if($flag) {
                 $wd_val = parseInt($('#wd_settings').val());
 
                 if ( $md_val == 0 || $cd_val == 0 || $wd_val == 0  ) {
-                    $vlag = 6;
+                    $vlag = 4;
                     window.location.href = window.location.pathname + "?flag=" + $vlag ; 
                 }
                 else {
+                    if($( "tr.selected" ).length == 0) {
+                        $vlag = 7;
+                        window.location.href = window.location.pathname + "?flag=" + $vlag ; 
+                    }
+
                     var myObj = { "md_val": $md_val, "cd_val": $cd_val, "wd_val": $wd_val};
 
                     //Dynamische variabelen in window, hierdoor geen elendige lange code
@@ -628,7 +633,7 @@ if($flag) {
             });
             
 
-            $('.callout').closest('[data-alert]').delay(5000).fadeOut(1000);
+            $('.callout').closest('[data-alert]').delay(10000).fadeOut(1000);
 
             if(parseInt($('#md_settings').val()) !== 0 ) {
                 $('.md_new_block').hide(); 
@@ -701,7 +706,7 @@ if($flag) {
 
         function findWeatherDetails() {
             if (searchInput.value === "") {
-                $vlag = 8;
+                $vlag = 6;
                 window.location.href = window.location.pathname + "?flag=" + $vlag ;
             }
             else {
@@ -733,7 +738,7 @@ if($flag) {
                     callback(httpRequest.responseText);
                 }
                 if (httpRequest.status == 404) {
-                    $vlag = 8;
+                    $vlag = 6;
                     window.location.href = window.location.pathname + "?flag=" + $vlag ;
                 }
             }

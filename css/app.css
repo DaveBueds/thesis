@@ -431,3 +431,14 @@
   font-weight: normal;
   border-bottom: none;
 }
+
+.thumbnail {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    border: solid 4px #fefefe;
+    border-radius: 0;
+    -webkit-box-shadow: 0 0 0 1px rgba(10,10,10,.2);
+    box-shadow: 0 0 0 1px rgba(10,10,10,.2);
+    line-height: 0;
+}
