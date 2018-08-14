@@ -34,7 +34,7 @@
     $M_R = $_POST['M_R'];
 
     if( empty($toespoor) || empty($camber) || empty($banden) || empty($bandendruk) || empty($hoogte) || empty($veer) || empty($torsieveer) || empty($LR_HSB) || empty($LR_LSB) || empty($LR_R) || empty($M_HSB) || empty($M_LSB) || empty($M_R)){
-      $flag = 5;
+      $flag = 3;
       $valid = false;
     }
     
@@ -45,11 +45,11 @@
       $q = $pdo->prepare($sql);
       $q->execute(array($toespoor,$camber,$banden,$bandendruk,$hoogte,$veer,$torsieveer,$LR_HSB,$LR_LSB,$LR_R,$M_HSB,$M_LSB,$M_R));
       Database::disconnect();
-      $flag = 3;
+      $flag = 2;
       header("Location: index.php?flag=$flag");
     }
     else {
-      $flag = 2;
+      $flag = 1;
       header("Location: index.php?flag=$flag");
     }        
   }

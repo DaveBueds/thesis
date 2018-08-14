@@ -14,7 +14,7 @@
     $typeEvent = $_POST['typeEvent'];
 
     if(empty($locatienaam) || empty($wegtype) || empty($ondergrond) || empty($typeEvent)) {
-      $flag = 5;
+      $flag = 3;
       $valid = false;
     }
 
@@ -25,11 +25,11 @@
       $q = $pdo->prepare($sql);
       $q->execute(array($locatienaam,$wegtype,$ondergrond,$typeEvent));
       Database::disconnect();
-      $flag = 3;
+      $flag = 2;
       header("Location: index.php?flag=$flag");
     }
     else {
-      $flag = 2;
+      $flag = 1;
       header("Location: index.php?flag=$flag");
     }        
   }

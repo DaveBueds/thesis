@@ -35,11 +35,11 @@
       $q = $pdo->prepare($sql);
       $q->execute(array($stadsnaam,$main,$temperatuur,$kortebeschrijving,$luchtdruk,$vochtigheid,$temperatuur_min,$temperatuur_max,$windsnelheid,$windrichting,$bewolktheid));
       Database::disconnect();
-      $flag = 3;
+      $flag = 2;
       header("Location: index.php?flag=$flag");
     }
     else {
-      $flag = 2;
+      $flag = 1;
       header("Location: index.php?flag=$flag");
     }        
   }
