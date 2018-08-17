@@ -66,7 +66,7 @@ if($flag) {
                             <thead>
                                 <tr>
                                     <th>id</th>
-                                    <th>Tijd</th>
+                                    <th>Time</th>
                                     <th>Type</th>
                                     <th>Data</th>
                                     <th>Unit</th>
@@ -79,7 +79,7 @@ if($flag) {
                             <tfoot>
                                 <tr>
                                     <th>id</th>
-                                    <th>Tijd</th>
+                                    <th>Time</th>
                                     <th>Type</th>
                                     <th>Data</th>
                                     <th>Unit</th>

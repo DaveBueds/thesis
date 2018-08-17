@@ -91,7 +91,7 @@ if ( !empty($_POST)) {
     }
     else {
     	$flag = 3;
-      	echo json_encode($flag);;
+      	echo json_encode($flag);
     }  
 }
 
