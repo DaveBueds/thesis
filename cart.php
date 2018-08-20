@@ -10,20 +10,20 @@ if($flag ) {
     $message = $messages[$flag];
 }
 
-if (isset($_POST['voorspeltijdbtn'])) {
+if (isset($_GET['voorspeltijdbtn'])) {
     /*if (empty($_POST['voorspelweer']) || empty($_POST['voorspelbanden']) || empty($_POST['voorspeltypeevent']) || empty($_POST['voorspeltoespoor']) || empty($_POST['voorspelcamber']) || empty($_POST['voorspelbandendruk']) || empty($_POST['voorspelhoogte'])) {
         //$flag = 3;
         header("Location: cart.php");
     }*/
     //$flag = 2;
     //$message = $messages[$flag];
-    $weer = $_POST['voorspelweer'];
-    $banden = $_POST['voorspelbanden'];
-    $typeEvent = $_POST['voorspeltypeevent'];
-    $toespoor = $_POST['voorspeltoespoor'];
-    $camber = $_POST['voorspelcamber'];
-    $bandendruk = $_POST['voorspelbandendruk'];
-    $hoogte = $_POST['voorspelhoogte'];
+    $weer = $_GET['voorspelweer'];
+    $banden = $_GET['voorspelbanden'];
+    $typeEvent = $_GET['voorspeltypeevent'];
+    $toespoor = $_GET['voorspeltoespoor'];
+    $camber = $_GET['voorspelcamber'];
+    $bandendruk = $_GET['voorspelbandendruk'];
+    $hoogte = $_GET['voorspelhoogte'];
 }
 else {
     $weer = "";
@@ -89,9 +89,8 @@ else {
             <div class="cell medium-8 medium-cell-block-y">
                 <div>
             <h2>Regressie boom</h2>
-            <br>
         </div>
-                <h4>Afstelling predicter</h4>
+                <h4>Afstelling voorspeller</h4>
                 <h5>Voorspelde tijd: 
                     <span class="success label">
                         <?php 
@@ -112,7 +111,7 @@ else {
 
                 <hr>
 
-                <form action="" method="post">
+                <form id="voorspelform" action="" method="GET">
                     <div class="grid-x grid-margin-x">
                         <div class="cell medium-2">
                             <label for="main" class="text-left middle">Weer:</label>
@@ -124,7 +123,7 @@ else {
                                 <option value="Rain">Rain</option>
                             </select>
                             <script type="text/javascript">
-                              document.getElementById('main').value = "<?php echo $_POST['voorspelweer'];?>";
+                              document.getElementById('main').value = "<?php echo $_GET['voorspelweer'];?>";
                             </script>
                         </div>
 
@@ -138,7 +137,7 @@ else {
                                 <option value="C17 wet">C17 wet</option>
                             </select>
                             <script type="text/javascript">
-                              document.getElementById('banden').value = "<?php echo $_POST['voorspelbanden'];?>";
+                              document.getElementById('banden').value = "<?php echo $_GET['voorspelbanden'];?>";
                             </script>
                         </div>
                         
@@ -155,7 +154,7 @@ else {
                                 <option value="SkidPad">SkidPad</option>
                             </select>
                             <script type="text/javascript">
-                              document.getElementById('typeEvent').value = "<?php echo $_POST['voorspeltypeevent'];?>";
+                              document.getElementById('typeEvent').value = "<?php echo $_GET['voorspeltypeevent'];?>";
                             </script>
                         </div>
 
@@ -165,7 +164,7 @@ else {
                         <div class="cell medium-4">
                             <input type="number" placeholder="1000" step="1" min="995" max="1005" id="toespoor" name="voorspeltoespoor">
                             <script type="text/javascript">
-                              document.getElementById('toespoor').value = "<?php echo $_POST['voorspeltoespoor'];?>";
+                              document.getElementById('toespoor').value = "<?php echo $_GET['voorspeltoespoor'];?>";
                             </script>
                         </div>
 
@@ -181,7 +180,7 @@ else {
                         <div class="cell medium-4">
                             <input type="number" placeholder="-0.5" step="0.1" min="-1.0" max="0" id="camber" name="voorspelcamber">
                             <script type="text/javascript">
-                              document.getElementById('camber').value = "<?php echo $_POST['voorspelcamber'];?>";
+                              document.getElementById('camber').value = "<?php echo $_GET['voorspelcamber'];?>";
                             </script>
                         </div>
 
@@ -191,7 +190,7 @@ else {
                         <div class="cell medium-4">
                             <input type="number" placeholder="0.7" step="0.1" min="0.6" max="0.8" id="bandendruk" name="voorspelbandendruk">
                             <script type="text/javascript">
-                              document.getElementById('bandendruk').value = "<?php echo $_POST['voorspelbandendruk'];?>";
+                              document.getElementById('bandendruk').value = "<?php echo $_GET['voorspelbandendruk'];?>";
                             </script>
                         </div>
                     </div>
@@ -203,14 +202,15 @@ else {
                         <div class="cell medium-4">
                             <input type="number" placeholder="30" step="1" min="20" max="40" id="hoogte" name="voorspelhoogte">
                             <script type="text/javascript">
-                              document.getElementById('hoogte').value = "<?php echo $_POST['voorspelhoogte'];?>";
+                              document.getElementById('hoogte').value = "<?php echo $_GET['voorspelhoogte'];?>";
                             </script>
                         </div>
 
                     </div>
                     <div class="grid-x grid-margin-x">
                         <div class="cell medium-12">
-                            <input type="submit" class="button expanded" name="voorspeltijdbtn" value="Voorspel tijd">
+                            <input id="flag" type="hidden" name="flag" value="<?php echo $flag; ?>">
+                            <input id="voorspelbtn" type="submit" class="button expanded" name="voorspeltijdbtn" value="Voorspel tijd">
                         </div>
                     </div>
 
@@ -228,6 +228,33 @@ else {
 
     $(document).ready(function() {
         $('.callout').closest('[data-alert]').delay(10000).fadeOut(1000);
+
+        $("#voorspelbtn").click(function(){
+            $weer = $('#main').val();
+            $banden = $('#banden').val();
+            $typeEvent = $('#typeEvent').val();
+            $toespoor = $('#toespoor').val();
+            $camber = $('#camber').val();
+            $bandendruk = $('#bandendruk').val();
+            $hoogte = $('#hoogte').val();
+
+            
+
+            //Indien variabelen ingevuld
+            if($weer && $banden && $typeEvent && $toespoor && $camber && $bandendruk && $hoogte) {
+                //console.log('ok');
+                $vlag = 8;
+                $("#flag").val($vlag);
+                $("#voorspelform").submit();
+            }
+            else {
+                //redirect
+                //console.log('niet ingevuld');
+                $vlag = 3;
+                $("#flag").val($vlag);
+                window.location.href = window.location.pathname + "?flag=" + $vlag ; 
+            }
+        });
     });
 </script>
 </body>

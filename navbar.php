@@ -9,7 +9,7 @@
             <ul class="dropdown menu" data-dropdown-menu>
                 <li class="menu-text">Data Collector</li>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="cart.php">CART</a></li>
+                <li><a href="cart.php">Predict</a></li>
             </ul>
         </div>
     </div>
