@@ -17,7 +17,7 @@
                 <div class="large-4 cell">
                     <ul class="menu">
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="cart.php">Predict</a></li>
+                        <li><a href="predict.php">Predict</a></li>
                     </ul>
                 </div>
             </div>

@@ -84,8 +84,7 @@ else {
                 <div>
             <h2>Regressie boom</h2>
         </div>
-                <h4>Afstelling voorspeller</h4>
-                <h5>Voorspelde tijd: 
+                <h4>Voorspelde tijd: 
                     <span class="success label">
                         <?php 
                         $weer = escapeshellarg($weer);
@@ -101,7 +100,7 @@ else {
                         echo $output;
                         ?>
                     </span>
-                </h5>
+                </h4>
 
                 <hr>
 
@@ -113,9 +112,15 @@ else {
                         <div class="cell medium-4">
                             <select type="text" id="main" name="voorspelweer">
                                 <option disabled selected value> -selecteer een optie- </option>
-                                <option value="Clear">Clear</option>
-                                <option value="Rain">Rain</option>
+                                <?php 
+                                    $sql = 'SELECT DISTINCT main FROM WeerData';
+                                                            
+                                    foreach ($pdo->query($sql) as $row) {
+                                        echo '<option value="'.$row['main'].'">'. $row['main'] . '</option>';
+                                    }
+                                ?>
                             </select>
+
                             <script type="text/javascript">
                               document.getElementById('main').value = "<?php echo $_GET['voorspelweer'];?>";
                             </script>
@@ -127,8 +132,13 @@ else {
                         <div class="cell medium-4">
                             <select type="text" id="banden" name="voorspelbanden">
                                 <option disabled selected value> -selecteer een optie- </option>
-                                <option value="C17 slick">C17 slick</option>
-                                <option value="C17 wet">C17 wet</option>
+                                <?php 
+                                    $sql = 'SELECT DISTINCT banden FROM MechanicalData';
+                                                            
+                                    foreach ($pdo->query($sql) as $row) {
+                                        echo '<option value="'.$row['banden'].'">'. $row['banden'] . '</option>';
+                                    }
+                                ?>
                             </select>
                             <script type="text/javascript">
                               document.getElementById('banden').value = "<?php echo $_GET['voorspelbanden'];?>";
@@ -144,8 +154,13 @@ else {
                         <div class="cell medium-4">
                             <select type="text" id="typeEvent" name="voorspeltypeevent">
                                 <option disabled selected value> -selecteer een optie- </option>
-                                <option value="Acceleratie">Acceleratie</option>
-                                <option value="SkidPad">SkidPad</option>
+                                <?php 
+                                    $sql = 'SELECT DISTINCT typeEvent FROM CircuitData';
+                                                            
+                                    foreach ($pdo->query($sql) as $row) {
+                                        echo '<option value="'.$row['typeEvent'].'">'. $row['typeEvent'] . '</option>';
+                                    }
+                                ?>
                             </select>
                             <script type="text/javascript">
                               document.getElementById('typeEvent').value = "<?php echo $_GET['voorspeltypeevent'];?>";
