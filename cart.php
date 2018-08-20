@@ -10,13 +10,7 @@ if($flag ) {
     $message = $messages[$flag];
 }
 
-if (isset($_GET['voorspeltijdbtn'])) {
-    /*if (empty($_POST['voorspelweer']) || empty($_POST['voorspelbanden']) || empty($_POST['voorspeltypeevent']) || empty($_POST['voorspeltoespoor']) || empty($_POST['voorspelcamber']) || empty($_POST['voorspelbandendruk']) || empty($_POST['voorspelhoogte'])) {
-        //$flag = 3;
-        header("Location: cart.php");
-    }*/
-    //$flag = 2;
-    //$message = $messages[$flag];
+if (isset($_GET['voorspeltijdbtn']) && ($flag != 3))  {
     $weer = $_GET['voorspelweer'];
     $banden = $_GET['voorspelbanden'];
     $typeEvent = $_GET['voorspeltypeevent'];
