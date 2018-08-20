@@ -76,29 +76,49 @@ else {
 
 
     <div class="cell medium-auto medium-cell-block-container">
-
+        
         <div class="grid-x grid-padding-x">
-            <div class="cell medium-2 medium-cell-block-y">
+            
+            <div class="cell medium-3 medium-cell-block-y">
             </div>
-            <div class="cell medium-8 medium-cell-block-y">
+
+            <div class="cell medium-6 medium-cell-block-y">
                 <div>
-            <h2>Regressie boom</h2>
+            <h2>Afstellingpredicter</h2>
         </div>
-                <h4>Voorspelde tijd: 
+                <h4>Verbeterde afstelling: 
                     <span class="success label">
                         <?php 
                         $weer = escapeshellarg($weer);
                         $banden = escapeshellarg($banden);
                         $typeEvent = escapeshellarg($typeEvent);
+
+                        if(isset($_GET['voorspeltijdbtn']) && $toespoor == "") {
+                            $toespoor = 0;
+                        }
+                        if(isset($_GET['voorspeltijdbtn']) && $camber == "") {
+                            $camber = 0;
+                        }
+                        if(isset($_GET['voorspeltijdbtn']) && $bandendruk == "") {
+                            $bandendruk = 0;
+                        }
+                        if(isset($_GET['voorspeltijdbtn']) && $hoogte == "") {
+                            $hoogte = 0;
+                        }
+
                         $toespoor = escapeshellarg($toespoor);
                         $camber = escapeshellarg($camber);
                         $bandendruk = escapeshellarg($bandendruk);
                         $hoogte = escapeshellarg($hoogte);
 
-                        $command = escapeshellcmd("/usr/local/bin/python3 /Applications/MAMP/htdocs/thesis/scripts/app.py $weer $banden $typeEvent $toespoor $camber $bandendruk $hoogte");
+                        //echo $toespoor;
+                        $command = escapeshellcmd("/usr/local/bin/python3 /Applications/MAMP/htdocs/thesis/scripts/afstelling.py $weer $banden $typeEvent $toespoor $camber $bandendruk $hoogte");
                         $output = shell_exec($command);
-                        echo $output;
+                        $outputpieces = explode(" ", $output);
+                        echo @$outputpieces[0];
+                        echo @$outputpieces[1];
                         ?>
+                        
                     </span>
                 </h4>
 
@@ -171,10 +191,7 @@ else {
                             <label for="toespoor" class="text-left middle">Toe:</label>
                         </div>
                         <div class="cell medium-4">
-                            <input type="number" placeholder="1000" step="1" min="995" max="1005" id="toespoor" name="voorspeltoespoor">
-                            <script type="text/javascript">
-                              document.getElementById('toespoor').value = "<?php echo $_GET['voorspeltoespoor'];?>";
-                            </script>
+                            <input type="number" placeholder="1000" step="1" min="995" max="1005" id="toespoor" name="voorspeltoespoor" value="<?php echo $outputpieces[2]; ?>">
                         </div>
 
                         
@@ -187,20 +204,14 @@ else {
                             <label for="camber" class="text-left middle">Camber:</label>
                         </div>
                         <div class="cell medium-4">
-                            <input type="number" placeholder="-0.5" step="0.1" min="-1.0" max="0" id="camber" name="voorspelcamber">
-                            <script type="text/javascript">
-                              document.getElementById('camber').value = "<?php echo $_GET['voorspelcamber'];?>";
-                            </script>
+                            <input type="number" placeholder="-0.5" step="0.1" min="-1.0" max="0" id="camber" name="voorspelcamber" value="<?php echo $outputpieces[3]; ?>">
                         </div>
 
                         <div class="cell medium-2">
                             <label for="bandendruk" class="text-left middle">Bandendruk:</label>
                         </div>
                         <div class="cell medium-4">
-                            <input type="number" placeholder="0.7" step="0.1" min="0.6" max="0.8" id="bandendruk" name="voorspelbandendruk">
-                            <script type="text/javascript">
-                              document.getElementById('bandendruk').value = "<?php echo $_GET['voorspelbandendruk'];?>";
-                            </script>
+                            <input type="number" placeholder="0.7" step="0.1" min="0.6" max="0.8" id="bandendruk" name="voorspelbandendruk" value="<?php echo $outputpieces[4]; ?>">
                         </div>
                     </div>
 
@@ -209,24 +220,24 @@ else {
                             <label for="hoogte" class="text-left middle">Hoogte:</label>
                         </div>
                         <div class="cell medium-4">
-                            <input type="number" placeholder="30" step="1" min="20" max="40" id="hoogte" name="voorspelhoogte">
-                            <script type="text/javascript">
-                              document.getElementById('hoogte').value = "<?php echo $_GET['voorspelhoogte'];?>";
-                            </script>
+                            <input type="number" placeholder="30" step="1" min="20" max="40" id="hoogte" name="voorspelhoogte" 
+                            value="<?php echo $outputpieces[5]; ?>">
                         </div>
 
                     </div>
                     <div class="grid-x grid-margin-x">
                         <div class="cell medium-12">
                             <input id="flag" type="hidden" name="flag" value="<?php echo $flag; ?>">
-                            <input id="voorspelbtn" type="submit" class="button expanded" name="voorspeltijdbtn" value="Voorspel tijd">
+                            <input id="voorspelbtn" type="submit" class="button expanded" name="voorspeltijdbtn" value="Verbeter afstelling">
                         </div>
                     </div>
 
                 </form>
             </div>
-            <div class="cell medium-2 medium-cell-block-y">
+            
+            <div class="cell medium-3 medium-cell-block-y" >
             </div>
+            
         </div>
     </div>
     <?php include('footer.php'); ?>
@@ -250,8 +261,9 @@ else {
             
 
             //Indien variabelen ingevuld
-            if($weer && $banden && $typeEvent && $toespoor && $camber && $bandendruk && $hoogte) {
+            if($weer && $banden && $typeEvent ) {
                 //console.log('ok');
+                
                 $vlag = 8;
                 $("#flag").val($vlag);
                 $("#voorspelform").submit();

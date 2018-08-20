@@ -3,7 +3,7 @@
     <div id="engadget-footer-contact-details-container">
         <footer>
             <div class="grid-x grid-margin-x align-middle expanded callout secondary">
-                <div class="large-4 cell">
+                <div class="large-3 cell">
                     <div class="grid-x small-up-1">
                         <div class="cell"><img class="thumbnail" src="img/footerthumbnail.jpeg"></div>
                         <div class="cell"><p>Een samenwerking van KU Leuven en Formula Electric Belgium</p></div>
@@ -14,10 +14,11 @@
                     <p>Masterproef: David Bueds</p>
                     <p>Het afstellen van een elektrische racewagen met behulp van artificiële intelligentie</p>
                 </div>
-                <div class="large-4 cell">
+                <div class="large-5 cell">
                     <ul class="menu">
                         <li><a href="index.php">Home</a></li>
-                        <li><a href="predict.php">Predict</a></li>
+                        <li><a href="predicttime.php">Timepredicter</a></li>
+                        <li><a href="afstelling.php">Afstellingpredicter</a></li>
                     </ul>
                 </div>
             </div>

@@ -9,7 +9,8 @@
             <ul class="dropdown menu" data-dropdown-menu>
                 <li class="menu-text">Data Collector</li>
                 <li><a href="index.php">Home</a></li>
-                <li><a href="predict.php">Predict</a></li>
+                <li><a href="predicttime.php">Timepredicter</a></li>
+                <li><a href="afstelling.php">Afstellingpredicter</a></li>
             </ul>
         </div>
     </div>
