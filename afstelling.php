@@ -121,13 +121,14 @@ else {
                         
                     </span>
                 </h4>
+                <p class="help-text" id="exampleHelpText">Velden met een (*) zijn verplicht in te vullen!</p>
 
                 <hr>
 
                 <form id="voorspelform" action="" method="GET">
                     <div class="grid-x grid-margin-x">
                         <div class="cell medium-2">
-                            <label for="main" class="text-left middle">Weer:</label>
+                            <label for="main" class="text-left middle">Weer*:</label>
                         </div>
                         <div class="cell medium-4">
                             <select type="text" id="main" name="voorspelweer">
@@ -147,7 +148,7 @@ else {
                         </div>
 
                         <div class="cell medium-2">
-                            <label for="banden" class="text-left middle">Banden:</label>
+                            <label for="banden" class="text-left middle">Banden*:</label>
                         </div>
                         <div class="cell medium-4">
                             <select type="text" id="banden" name="voorspelbanden">
@@ -169,7 +170,7 @@ else {
 
                     <div class="grid-x grid-margin-x">
                         <div class="cell medium-2">
-                            <label for="typeEvent" class="text-left middle">Type event:</label>
+                            <label for="typeEvent" class="text-left middle">Type event*:</label>
                         </div>
                         <div class="cell medium-4">
                             <select type="text" id="typeEvent" name="voorspeltypeevent">

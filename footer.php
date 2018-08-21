@@ -1,3 +1,4 @@
+
 <div class="cell shrink footer">
     <hr>
     <div id="engadget-footer-contact-details-container">
@@ -16,9 +17,9 @@
                 </div>
                 <div class="large-5 cell">
                     <ul class="menu">
-                        <li><a href="index.php">Home</a></li>
-                        <li><a href="predicttime.php">Timepredicter</a></li>
-                        <li><a href="afstelling.php">Afstellingpredicter</a></li>
+                        <li class="<?php active('index.php');?>"><a href="index.php">Home</a></li>
+                        <li class="<?php active('predicttime.php');?>"><a href="predicttime.php">Timepredicter</a></li>
+                        <li class="<?php active('afstelling.php');?>"><a href="afstelling.php">Afstellingpredicter</a></li>
                     </ul>
                 </div>
             </div>

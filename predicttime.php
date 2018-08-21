@@ -87,6 +87,7 @@ else {
             <h2>Timepredicter</h2>
         </div>
                 <h4>Voorspelde tijd: 
+
                     <span class="success label">
                         <?php 
                         $weer = escapeshellarg($weer);
@@ -103,13 +104,16 @@ else {
                         ?>
                     </span>
                 </h4>
+                <p class="help-text" id="exampleHelpText">Alle invoervelden zijn verplicht in te vullen!</p>
 
                 <hr>
 
                 <form id="voorspelform" action="" method="GET">
                     <div class="grid-x grid-margin-x">
                         <div class="cell medium-2">
-                            <label for="main" class="text-left middle">Weer:</label>
+                            <label for="main" class="text-left middle">
+                                <span data-tooltip class="top" title="De weersomstandigheden waarop je voorspelling wil baseren">Weer:</span>
+                            </label>
                         </div>
                         <div class="cell medium-4">
                             <select type="text" id="main" name="voorspelweer">
@@ -129,7 +133,9 @@ else {
                         </div>
 
                         <div class="cell medium-2">
-                            <label for="banden" class="text-left middle">Banden:</label>
+                            <label for="banden" class="text-left middle">
+                                <span data-tooltip class="top" title="De bandensoort waarop je voorspelling wil baseren">Banden:</span>
+                            </label>
                         </div>
                         <div class="cell medium-4">
                             <select type="text" id="banden" name="voorspelbanden">
@@ -151,7 +157,9 @@ else {
 
                     <div class="grid-x grid-margin-x">
                         <div class="cell medium-2">
-                            <label for="typeEvent" class="text-left middle">Type event:</label>
+                            <label for="typeEvent" class="text-left middle">
+                                <span data-tooltip class="top" title="Het type event waarop je voorspelling wil baseren">Type event:</span>
+                            </label>
                         </div>
                         <div class="cell medium-4">
                             <select type="text" id="typeEvent" name="voorspeltypeevent">
@@ -170,7 +178,9 @@ else {
                         </div>
 
                         <div class="cell medium-2">
-                            <label for="toespoor" class="text-left middle">Toe:</label>
+                            <label for="toespoor" class="text-left middle">
+                                <span data-tooltip class="top" title="De hoeveelheid toespoor waarop je voorspelling wil baseren">Toe:</span>
+                            </label>
                         </div>
                         <div class="cell medium-4">
                             <input type="number" placeholder="1000" step="1" min="995" max="1005" id="toespoor" name="voorspeltoespoor">
@@ -186,7 +196,9 @@ else {
 
                     <div class="grid-x grid-margin-x">
                         <div class="cell medium-2">
-                            <label for="camber" class="text-left middle">Camber:</label>
+                            <label for="camber" class="text-left middle">
+                                <span data-tooltip class="top" title="De hoeveelheid camber waarop je voorspelling wil baseren">Camber:</span>
+                            </label>
                         </div>
                         <div class="cell medium-4">
                             <input type="number" placeholder="-0.5" step="0.1" min="-1.0" max="0" id="camber" name="voorspelcamber">
@@ -196,7 +208,9 @@ else {
                         </div>
 
                         <div class="cell medium-2">
-                            <label for="bandendruk" class="text-left middle">Bandendruk:</label>
+                            <label for="bandendruk" class="text-left middle">
+                                <span data-tooltip class="top" title="De hoeveelheid bandendruk waarop je voorspelling wil baseren">Bandendruk:</span>
+                            </label>
                         </div>
                         <div class="cell medium-4">
                             <input type="number" placeholder="0.7" step="0.1" min="0.6" max="0.8" id="bandendruk" name="voorspelbandendruk">
@@ -208,10 +222,13 @@ else {
 
                     <div class="grid-x grid-margin-x">
                         <div class="cell medium-2">
-                            <label for="hoogte" class="text-left middle">Hoogte:</label>
+                            <label for="hoogte" class="text-left middle">
+                                <span data-tooltip class="top" title="De hoeveelheid hoogte waarop je voorspelling wil baseren">Hoogte:</span>
+                            </label>
                         </div>
                         <div class="cell medium-4">
                             <input type="number" placeholder="30" step="1" min="20" max="40" id="hoogte" name="voorspelhoogte">
+
                             <script type="text/javascript">
                               document.getElementById('hoogte').value = "<?php echo $_GET['voorspelhoogte'];?>";
                             </script>

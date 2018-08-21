@@ -9,6 +9,8 @@ $message = '';
 if($flag) {
     $message = $messages[$flag];
 }
+
+$activePage = "index";
 ?>
 
 
@@ -106,9 +108,6 @@ if($flag) {
                                     <form action="create_md.php" method="post">
                                         <div class="grid-container">
                                             <div class="grid-x grid-padding-x">
-
-                    
-
                                                 <div class="medium-12 cell">
                                                     <label>Settings:
                                                         <select name="settings" id="md_settings">
@@ -148,28 +147,28 @@ if($flag) {
 
                                                 <div class="md_new_block medium-4 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg toespoor">Toe (mm):</span>
+                                                        <span data-tooltip class="top" title="Afwijking ten opzichte van lengte-as">Toe (mm):</span>
                                                         <input name="toespoor" type="number" value="100" step="1" required>
                                                     </label>
                                                 </div>
 
                                                 <div class="md_new_block medium-4 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Front view">Camber (°):</span>
+                                                        <span data-tooltip class="top" title="Afwijking ten opzichte van verticale lijn">Camber (°):</span>
                                                         <input name="camber" type="number" value="2" step="1" required>
                                                     </label>
                                                 </div>
 
                                                 <div class="md_new_block medium-4 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg hoogte">Hoogte (mm):</span>
+                                                        <span data-tooltip class="top" title="Hoogte van chassis tegenover grond">Hoogte (mm):</span>
                                                         <input name="hoogte" type="number" value="3" step="0.5" required>
                                                     </label>
                                                 </div>
 
                                                 <div class="md_new_block medium-6 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg bandentype">Bandentype:</span>
+                                                        <span data-tooltip class="top" title="Gebruikte bandensoort">Bandentype:</span>
                                                         <select name="banden" required>
                                                             <option value="C17 slick">C17 slick</option>
                                                             <option value="C17 wet">C17 wet</option>
@@ -179,7 +178,7 @@ if($flag) {
                                                 
                                                 <div class="md_new_block medium-6 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg bandendruk">Bandendruk (bar):</span>
+                                                        <span data-tooltip class="top" title="Hoeveelheid bandendruk in bar">Bandendruk (bar):</span>
                                                         <input name="bandendruk" type="number" value="2" step="0.1" required>
                                                     </label>
                                                 </div>
@@ -188,7 +187,7 @@ if($flag) {
 
                                                 <div class="md_new_block medium-6 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg veer">Veer:</span>
+                                                        <span data-tooltip class="top" title="Type veer gebruikt in schokdempers">Veer:</span>
                                                         <select name="veer" required>
                                                             <option value="36mm soft">36mm Soft</option>
                                                             <option value="36mm hard">36mm Hard</option>
@@ -198,7 +197,7 @@ if($flag) {
 
                                                 <div class="md_new_block medium-6 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg torsieveer">Torsieveer:</span>
+                                                        <span data-tooltip class="top" title="Type torsieveer">Torsieveer:</span>
                                                         <select name="torsieveer" required>
                                                             <option value="torsieveer 1">torsieveer 1</option>
                                                             <option value="torsieveer 2">torsieveer 2</option>
@@ -209,38 +208,38 @@ if($flag) {
 
                                                 <div class="md_new_block medium-4 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg demper">LR HSB:</span>
+                                                        <span data-tooltip class="top" title="Links/Rechts High speed bump kliks">LR HSB:</span>
                                                         <input name="LR_HSB" type="number" min="1" max="18" value="9" step="1" required>
                                                     </label>
                                                 </div>
                                                 <div class="md_new_block medium-4 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg demper">LR LSB:</span>
+                                                        <span data-tooltip class="top" title="Links/Rechts Low speed bump kliks">LR LSB:</span>
                                                         <input name="LR_LSB" type="number" min="1" max="18" value="9" step="1" required>
                                                     </label>
                                                 </div>
                                                 <div class="md_new_block medium-4 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg demper">LR R:</span>
+                                                        <span data-tooltip class="top" title="Links/Rechts rebound kliks">LR R:</span>
                                                         <input name="LR_R" type="number" min="1" max="18" value="9" step="1" required>
                                                     </label>
                                                 </div>
 
                                                 <div class="md_new_block medium-4 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg demper">M HSB:</span>
+                                                        <span data-tooltip class="top" title="Midden High speed bump kliks">M HSB:</span>
                                                         <input name="M_HSB" type="number" min="1" max="18" value="9" step="1" required>
                                                     </label>
                                                 </div>
                                                 <div class="md_new_block medium-4 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg demper">M LSB:</span>
+                                                        <span data-tooltip class="top" title="Midden Low speed bump kliks">M LSB:</span>
                                                         <input name="M_LSB" type="number" min="1" max="18" value="9" step="1" required>
                                                     </label>
                                                 </div>
                                                 <div class="md_new_block medium-4 cell">
                                                     <label>
-                                                        <span data-tooltip class="top" title="Uitleg demper">M R:</span>
+                                                        <span data-tooltip class="top" title="Midden rebound kliks">M R:</span>
                                                         <input name="M_R" type="number" min="1" max="18" value="9" step="1" required>
                                                     </label>
                                                 </div>
@@ -295,12 +294,14 @@ if($flag) {
                                                     <p>Maak hier een nieuwe setting.</p>
                                                 </div>
                                                 <div class="cd_new_block medium-6 cell">
-                                                    <label>Naam (locatie):
+                                                    <label>
+                                                        <span data-tooltip class="top" title="Locatie van circuit">Naam (locatie):</span>
                                                         <input name="locatienaam" type="text">
                                                     </label>
                                                 </div>
                                                 <div class="cd_new_block medium-6 cell">
-                                                    <label>Weg type:
+                                                    <label>
+                                                        <span data-tooltip class="top" title="Gebruikte ondergrond">Weg type:</span>
                                                         <select name="wegtype">
                                                             <option value="Asfalt">Asfalt</option>
                                                             <option value="Beton">Beton</option>
@@ -309,7 +310,8 @@ if($flag) {
                                                 </div>
 
                                                 <div class="cd_new_block medium-6 cell">
-                                                    <label>Ondergrond:
+                                                    <label>
+                                                        <span data-tooltip class="top" title="Staat van het wegdek">Ondergrond:</span>
                                                         <select name="ondergrond">
                                                             <option value="Droog">Droog</option>
                                                             <option value="Nat">Nat</option>
@@ -318,7 +320,8 @@ if($flag) {
                                                 </div>
 
                                                 <div class="cd_new_block medium-6 cell">
-                                                    <label>Type event:
+                                                    <label>
+                                                        <span data-tooltip class="top" title="Soort dynamisch event">Type event:</span>
                                                         <select name="typeEvent">
                                                             <option value="Acceleratie">Acceleratie</option>
                                                             <option value="SkidPad">Skid Pad</option>
