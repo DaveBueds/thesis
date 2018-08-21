@@ -13,7 +13,8 @@ $messages = array(
     5=>'Fout bij het inladen van de telemetriedata.',
     6=>'Gelieve een correcte (of andere) stadsnaam in te geven bij weerdata.',
     7=>'Duid sensorwaarden aan voor het koppelen.',
-    8=>'Zie voorspelling in groene balk.'
+    8=>'Zie voorspelling in groene balk.',
+    9=>'Zie voorspelling in groene balk en afstellingsparameters aangevuld in de invoervelden.'
 );
 
 ?>

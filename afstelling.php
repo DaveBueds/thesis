@@ -265,7 +265,7 @@ else {
             if($weer && $banden && $typeEvent ) {
                 //console.log('ok');
                 
-                $vlag = 8;
+                $vlag = 9;
                 $("#flag").val($vlag);
                 $("#voorspelform").submit();
             }

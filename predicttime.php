@@ -104,7 +104,7 @@ else {
                         ?>
                     </span>
                 </h4>
-                <p class="help-text" id="exampleHelpText">Alle invoervelden zijn verplicht in te vullen!</p>
+                <p class="help-text" ic="exampleHelpText">Alle invoervelden zijn verplicht in te vullen!</p>
 
                 <hr>
 

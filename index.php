@@ -467,7 +467,7 @@ $activePage = "index";
             var selected = [];
 
             $('#sensortabel').DataTable( {
-                lengthMenu: [[50, 100, 1000, 2000, -1], [50, 100, 1000, 2000, "All"]],
+                lengthMenu: [[5,50, 100, 1000, 2000, -1], [5,50, 100, 1000, 2000, "All"]],
                 select: true,
                 language: {
                     select: {
