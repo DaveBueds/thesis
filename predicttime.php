@@ -46,8 +46,6 @@ else {
         <?php include('navbar.php'); ?>
 
         <div class="grid-y medium-grid-frame">
-
-
             <div class="cell shrink header medium-cell-block-container">
                 <br>
                 <div class="clearfix">
@@ -98,7 +96,7 @@ else {
                         $bandendruk = escapeshellarg($bandendruk);
                         $hoogte = escapeshellarg($hoogte);
 
-                        $command = escapeshellcmd("/usr/local/bin/python3 /Applications/MAMP/htdocs/thesis/scripts/app.py $weer $banden $typeEvent $toespoor $camber $bandendruk $hoogte");
+                        $command = escapeshellcmd("/usr/local/bin/python3 /Applications/MAMP/htdocs/thesis/scripts/timepredict.py $weer $banden $typeEvent $toespoor $camber $bandendruk $hoogte");
                         $output = shell_exec($command);
                         echo $output ;
                         ?>
@@ -268,18 +266,13 @@ else {
             $bandendruk = $('#bandendruk').val();
             $hoogte = $('#hoogte').val();
 
-            
-
             //Indien variabelen ingevuld
             if($weer && $banden && $typeEvent && $toespoor && $camber && $bandendruk && $hoogte) {
-                //console.log('ok');
                 $vlag = 8;
                 $("#flag").val($vlag);
                 $("#voorspelform").submit();
             }
             else {
-                //redirect
-                //console.log('niet ingevuld');
                 $vlag = 3;
                 $("#flag").val($vlag);
                 window.location.href = window.location.pathname + "?flag=" + $vlag ; 

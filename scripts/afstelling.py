@@ -75,9 +75,9 @@ for toe in rangebuilder(toeInput, toeMin, toeMax):
                 #print("             ", hoogte)
     
                 new_data = OrderedDict([
-                ('main', 2.0),
-                ('banden', 2.0),
-                ('typeEvent', 2.0),
+                ('main', mainInput),
+                ('banden', soortbandenInput),
+                ('typeEvent', typeEventInput),
                 ('toespoor', toe),
                 ('camber', camber),
                 ('bandendruk', bandendruk),

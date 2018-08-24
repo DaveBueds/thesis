@@ -12,24 +12,15 @@ if($flag) {
 
 $activePage = "index";
 ?>
-
-
 <!doctype html>
 <html class="no-js" lang="en" dir="ltr">
-
 <head>
     <?php include('head.php'); ?>
 </head>
-
 <body>
-
     <div class="grid-container">
-
         <?php include('navbar.php'); ?>
-
         <div class="grid-y medium-grid-frame">
-            
-
             <div class="cell shrink header medium-cell-block-container">
                 <br>
                 <div class="clearfix">
@@ -53,14 +44,10 @@ $activePage = "index";
                       </button>
                     </div>
                 <?php } ?>
-
             </div>
-
             
             <div class="cell medium-auto medium-cell-block-container">
                 <div class="grid-x grid-padding-x">
-
-
                     <div class="cell medium-8 medium-cell-block-y">
                         <h4>Telemetrie data</h4>
 
@@ -92,10 +79,7 @@ $activePage = "index";
                                 </tr>
                             </tfoot>
                         </table>
-
                     </div>
-
-
 
                     <div class="cell medium-4 medium-cell-block-y">
                         <ul class="accordion" data-accordion data-allow-all-closed="true" data-multi-expand="true">
@@ -251,12 +235,7 @@ $activePage = "index";
                                         </div>
                                     </form>
                                 </div>
-
                             </li>
-
-
-
-                            
 
                             <li class="accordion-item" data-accordion-item>
                                 <a href="#" class="accordion-title">Circuit data</a>
@@ -343,7 +322,6 @@ $activePage = "index";
                                     <form action="create_wd.php" method="post">
                                         <div class="grid-container">
                                             <div class="grid-x grid-padding-x">
-
                                                 <div class="medium-12 cell">
                                                     <label>Settings:
                                                         <select name="settings" id="wd_settings">
@@ -374,14 +352,12 @@ $activePage = "index";
                                                         </select>
                                                     </label>
                                                 </div>
-
                                                 <div class="wd_new_block medium-10 cell search">
                                                     <input name="stadsnaam" id="search-txt" type="text" placeholder="Geef stadsnaam">
                                                 </div>
                                                 <div class="wd_new_block medium-2 cell search">
                                                     <button id="search-btn" type="button" class="button float-right"><i class="fa fa-search" aria-hidden="true"></i></button>
                                                 </div>
-
                                                 <div class="wd_new_block medium-7 cell">
                                                     <label>Main (regen, sneeuw,...):
                                                         <input name="main" id="weer_main" type="text" readonly>
@@ -392,7 +368,6 @@ $activePage = "index";
                                                         <input name="temperatuur" id="weer_temp" type="text" readonly>
                                                     </label>
                                                 </div>
-
                                                 <div class="wd_new_block medium-6 cell">
                                                     <label>Korte beschrijving:
                                                         <input name="kortebeschrijving" id="weer_sd" type="text" readonly>
@@ -447,22 +422,12 @@ $activePage = "index";
                     </div>
                 </div>
             </div>
-
             <?php include('footer.php'); ?>
         </div>
-
-
-
-
     </div>
-    
-
-
     <?php include('scripts.php'); ?>
 
-
     <script type="text/javascript">
-
         $(document).ready(function() {
             var selected = [];
 
@@ -492,8 +457,6 @@ $activePage = "index";
                 window.location.href = window.location.pathname + "?flag=" + $vlag ; 
             } );
 
-
-
             function cal_avg(lengte, data) {
                 var avg = 0;
                 var nl = lengte;
@@ -508,7 +471,6 @@ $activePage = "index";
                         i--;
                     }
                 }
-
                 for(var j = 0; j <= data.length; j++) {
                     if(j == data.length) {
                         avg = avg / data.length;
@@ -527,12 +489,10 @@ $activePage = "index";
                 }
             }
 
-
             
             $("#btn_koppel").click(function(){
                 var data = [];
                 var table = $('#sensortabel').DataTable();
-
                 $md_val = parseInt($('#md_settings').val());
                 $cd_val = parseInt($('#cd_settings').val());
                 $wd_val = parseInt($('#wd_settings').val());
@@ -546,7 +506,6 @@ $activePage = "index";
                         $vlag = 7;
                         window.location.href = window.location.pathname + "?flag=" + $vlag ; 
                     }
-
                     var myObj = { "md_val": $md_val, "cd_val": $cd_val, "wd_val": $wd_val};
 
                     //Dynamische variabelen in window, hierdoor geen elendige lange code
@@ -563,8 +522,6 @@ $activePage = "index";
                         }
                         timearray.push(new Date(tijd));
                     });
-                    console.log(typearray);
-
                     //sorteren van tijden oplopen
                     var date_sort_asc = function (date1, date2) {
                       if (date1 > date2) return 1;
@@ -575,22 +532,16 @@ $activePage = "index";
                     timearray.sort(date_sort_asc);
                     var beginTijd = timearray[0];
                     var eindTijd = timearray[timearray.length -1];
-                    
                     var totaalTijd = (eindTijd.getTime() - beginTijd.getTime())/1000; //tijd in seconden
                     myObj["totaalTijd"] = totaalTijd;
-
                     //typearray wordt gebruikt om variabele met zelfde naam te maken
                     for (var i=0;i<typearray.length;i+=1){
                       window[typearray[i]] = [];
                     }
 
-
-                    
                     $( "tr.selected" ).each(function( index ) {
-                        
                         var type = table.row(this).data()[5];
                         var content = table.row(this).data()[3];
-
                         //wanneer type gelijk is wordt de data aan de variabel met naam type toegevoegd
                         switch("type_"+type) {
                             case "type_"+type:
@@ -601,7 +552,6 @@ $activePage = "index";
                                 break;
                         }
                     });
-
                     //de array met naam 'type'_avg wordt gebruikt om het gemiddelde van de 'type' array te berekenen 
                     //elk type wordt aan json toegevoegd
                     for (var i=0;i<typearray.length;i+=1){
@@ -609,15 +559,8 @@ $activePage = "index";
                         window[typearray[i]+'_avg'] = cal_avg(parseFloat(window[typearray[i]].length), window[typearray[i]]);
                         myObj[naam] = window[typearray[i]+'_avg'];
                     }
-                    console.log(window);
-
-                    
                     data.push(myObj);
-
                     var json = JSON.stringify(data);
-                    //console.log(json);
-                    
-                    
                     $.ajax({
                         url: "koppeldata.php",
                         type: "POST",
@@ -628,24 +571,18 @@ $activePage = "index";
                             window.location.href = window.location.pathname + "?flag=" + $vlag ;
                             
                         }
-                    });
-                    
-                    
+                    });                    
                 }
-
             });
-            
 
             $('.callout').closest('[data-alert]').delay(10000).fadeOut(1000);
 
             if(parseInt($('#md_settings').val()) !== 0 ) {
                 $('.md_new_block').hide(); 
             } 
-
             if(parseInt($('#cd_settings').val()) !== 0 ) {
                 $('.cd_new_block').hide(); 
             } 
-
             if(parseInt($('#wd_settings').val()) !== 0 ) {
                 $('.wd_new_block').hide(); 
             }
@@ -659,7 +596,6 @@ $activePage = "index";
                         $('.md_new_block').show(); 
                     } 
                 });
-
                 $('#cd_settings').change(function(){
                     if(parseInt($('#cd_settings').val()) !== 0 ) {
                         $('.cd_new_block').hide(); 
@@ -668,8 +604,6 @@ $activePage = "index";
                         $('.cd_new_block').show(); 
                     } 
                 });
-
-
                 $('#wd_settings').change(function(){
                     if(parseInt($('#wd_settings').val()) !== 0 ) {
                         $('.wd_new_block').hide(); 
@@ -749,11 +683,8 @@ $activePage = "index";
             httpRequest.send();
         }
     </script>
-
 </body>
-
 </html>
-
 <?php
 Database::disconnect();
 ?>
