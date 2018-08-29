@@ -1,4 +1,3 @@
-
 <div class="cell shrink footer">
     <hr>
     <div id="engadget-footer-contact-details-container">

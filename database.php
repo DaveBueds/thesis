@@ -1,15 +1,18 @@
 <?php
+/**
+ * Author:    David Bueds
+ * Created:   2017-2018
+ * Subject:   Masterproef 
+ **/
+//MySQL connectie mbv PDO
 //https://www.startutorial.com/articles/view/php-crud-tutorial-part-1
 
-
 class Database
-{
-    
+{    
     private static $dbName = 'thesis' ;
     private static $dbHost = 'localhost' ;
     private static $dbUsername = 'root';
     private static $dbUserPassword = 'root';
-
 
     private static $cont  = null;
      

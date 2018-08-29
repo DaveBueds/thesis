@@ -1,4 +1,9 @@
 <?php
+/**
+ * Author:    David Bueds
+ * Created:   2017-2018
+ * Subject:   Masterproef 
+ **/
 function active($currect_page){
   $url_array =  explode('/', $_SERVER['REQUEST_URI']) ;
   $url = end($url_array);  

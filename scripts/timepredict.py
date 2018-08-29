@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-
+"""
+ * Author:    David Bueds
+ * Created:   2017-2018
+ * Subject:   Masterproef 
+"""
+#Voorspelt op basis van een afstelling een tijd
 import sys, os
 import pickle
 import numpy as np
@@ -31,9 +36,6 @@ if typeEvent == 'Acceleratie':
 else:
 	typeEvent = 2
 
-
-#print('Type', toespoor)
-
 new_data = OrderedDict([
     ('main', weer),
     ('banden', banden),
@@ -53,4 +55,3 @@ d = reg_tree.predict(new_data)
 
 
 print(d[0], "s")
-#print("dave<br>test")

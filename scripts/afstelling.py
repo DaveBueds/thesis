@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-
+"""
+ * Author:    David Bueds
+ * Created:   2017-2018
+ * Subject:   Masterproef 
+"""
+#Voorspelt de ideale afstelling gegeven de omstandigheden
 import sys, os
 import pickle
 import numpy as np
@@ -66,14 +71,9 @@ pkl_file = open(path, 'rb')
 reg_tree = pickle.load(pkl_file)
 
 for toe in rangebuilder(toeInput, toeMin, toeMax):
-    #print(toe)
     for camber in rangearray(camberInput, camberArray):
-        #print("  ", camber)
         for bandendruk in rangearray(bandendrukInput, bandenArray):
-            #print("      ", bandendruk)    
-            for hoogte in rangebuilder(hoogteInput, hoogteMin, hoogteMax):
-                #print("             ", hoogte)
-    
+            for hoogte in rangebuilder(hoogteInput, hoogteMin, hoogteMax):    
                 new_data = OrderedDict([
                 ('main', mainInput),
                 ('banden', soortbandenInput),
